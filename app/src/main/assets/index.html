@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Última etapa! 3/3</h2>
+        <p>Só mais alguns detalhes.</p>
+
+        <label for="pais">País:</label>
+        <select id="pais">
+            <option value="">Selecione um País</option>
+            <option value="Brasil">Brasil</option>
+            <option value="EUA">Estados Unidos</option>
+            <option value="Portugal">Portugal</option>
+        </select>
+        <div class="error-message" id="pais-error">Por favor, selecione um país.</div>
+
+        <label for="moeda">Moeda:</label>
+        <select id="moeda">
+            <option value="">Selecione uma moeda</option>
+            <option value="BRL">Real (BRL)</option>
+            <option value="USD">Dólar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+        </select>
+        <div class="error-message" id="moeda-error">Por favor, selecione uma moeda.</div>
+
+        <label for="segmento">Segmento de atuação</label>
+        <select id="segmento">
+            <option value="">Selecione um segmento de atuação: </option>
+            <option value="comercio">Comércio</option>
+            <option value="industria">Indústria</option>
+            <option value="agropecuaria">Agropecuária</option>
+            <option value="servicos">Serviços</option>
+            <option value="outros">Outros</option>
+        </select>
+        <div class="error-message" id="segmento-error">Por favor, selecione um segmento.</div>
+
+        <div class="termos-container">
+            <label for="termos">
+                <input type="checkbox" id="termos">
+                <span> Aceito os <a href="termos.html">Termos e Política de Privacidade</a></span>
+            </label>
+        </div>
+
+        <button class="cadastrar" id="cadastrar" disabled>Cadastrar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
