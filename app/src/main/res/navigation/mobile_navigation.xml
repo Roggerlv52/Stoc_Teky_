@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.rogger.myapplication.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.rogger.myapplication.ui.register.view.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.rogger.myapplication.ui.setting.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
+
+    <fragment android:id="@+id/nav_register_name_password"
+        android:name="com.rogger.myapplication.ui.register.view.RegisterNamePasswordFragment"
+        android:label="RegisterNamePasswordFragment"
+        tools:layout="@layout/fragment_register_name_password" />
+
+    <fragment android:id="@+id/nav_register_email_fragment"
+        android:name="com.rogger.myapplication.ui.register.view.RegisterEmailFragment"
+        android:label="RegisterEmailFragment"
+        tools:layout="@layout/fragment_register_email" />
+
+    <fragment android:id="@+id/nav_wecome"
+        android:name="com.rogger.myapplication.ui.register.view.RegisterWelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_register_welcome" />
+
+
+</navigation>
