@@ -4,13 +4,14 @@ import com.rogger.myapplication.ui.login.data.FakeDataSource
 import com.rogger.myapplication.ui.login.data.LoginRepository
 import com.rogger.myapplication.ui.register.data.FakeRegisterDataSource
 import com.rogger.myapplication.ui.register.data.RegisterRepository
+import com.rogger.myapplication.ui.splashScreen.data.FakeLocalDataSource
+import com.rogger.myapplication.ui.splashScreen.data.SplashRepository
 
 object DependencyInjector {
-    /*
-    fun splashRepository() : SplashRepository{
+
+    fun splashRepository() : SplashRepository {
         return SplashRepository(FakeLocalDataSource())
     }
-*/
 
     fun loginRepository() : LoginRepository {
         return LoginRepository(FakeDataSource())

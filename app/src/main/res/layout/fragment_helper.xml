@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
+    android:orientation="vertical"
     tools:context=".ui.helper.HelperFragment">
 
     <LinearLayout
@@ -60,10 +61,10 @@
                         android:id="@+id/switch_1"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Alertas de estoque baixo"
+                        android:text="Entrada no Estoque"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -71,9 +72,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Alertas de estoque alto"
+                        android:text="Estoque Alto"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -81,11 +82,82 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Alertas de vencimento"
+                        android:text="Estoque Baixo"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Previsão do Fim de Estoque"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Produtos em Vencimento"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Promoções de Fornecedores"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Saída do Estoque"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Sugestão de Doação do Estoque Excedente"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_9"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Sugestão de Reposição"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:text="Vencimento de Locação"
+                        app:thumbTint="@color/switch_thumb_color"
+                        app:trackTint="@color/switch_track_color" />
+
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
