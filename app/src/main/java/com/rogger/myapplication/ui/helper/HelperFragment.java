@@ -1,4 +1,4 @@
-package com.rogger.myapplication.ui.register.view;
+package com.rogger.myapplication.ui.helper;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.rogger.myapplication.databinding.FragmentGalleryBinding;
+import com.rogger.myapplication.databinding.FragmentHelperBinding;
 
-public class GalleryFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+public class HelperFragment extends Fragment {
+
+   private FragmentHelperBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        HelperViewModel galleryViewModel =
+                new ViewModelProvider(this).get(HelperViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentHelperBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+       // galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

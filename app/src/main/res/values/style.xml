@@ -49,6 +49,40 @@
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginBottom">2dp</item>
     </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="NavigationViewStyle">
+        <item name="itemHorizontalPadding">20dp</item>
+        <item name="itemIconPadding">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:dividerHeight">2dp</item>
+    </style>
+    <style name="Theme.MyApplication.CardViewCustom">
+        <item name="android:layout_marginTop">80dp</item>
+        <item name="android:elevation">10dp</item>
+    </style>
+
+    <style name="CardViewCustom_TexteView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_marginStart">2dp</item>
+       <!-- <item name="layout_constraintLeft_toLeftOf">parent</item> -->
+    </style>
+
+    <style name="CardViewCustom_ImageView">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">17dp</item>
+        <item name="android:contentDescription">@string/todo</item>
+        <item name="android:src">@drawable/ic_edit_24</item>
+    </style>
+
+
 
 
 </resources>

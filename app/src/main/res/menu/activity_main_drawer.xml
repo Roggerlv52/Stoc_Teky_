@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-
-
-    <group android:checkableBehavior="single">
+    <group>
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_24"
@@ -15,19 +13,38 @@
             android:icon="@drawable/ic_settings_24"
             android:title="@string/menu_setting" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_helper"
             android:icon="@drawable/sino_active_24"
             android:title="@string/menu_central" />
-
-        <item android:title="@string/more">
-            <menu >
-                <item android:id="@+id/nav_outros"
-                    android:icon="@drawable/ic_share_24"
-                    android:title="@string/menu_share"/>
-                <item android:id="@+id/nav_suport"
-                    android:icon="@drawable/ic_live_help_24"
-                    android:title="Suport"/>
-            </menu>
-        </item>
     </group>
+
+    <group android:id="@+id/group_todo_1">
+        <item
+            android:id="@+id/nav_btn_site"
+            android:icon="@drawable/web_24"
+            android:title="Site" />
+        <item
+            android:id="@+id/nav_btn_help"
+            android:icon="@drawable/help_24"
+            android:title="Precisa de Ajuda?" />
+        <item
+            android:id="@+id/nav_btn_termos"
+            android:icon="@drawable/ic_library_books_24"
+            android:title="Termos de Uso" />
+        <item
+            android:id="@+id/nav_btn_avaliar"
+            android:icon="@drawable/ic_star_outline_24"
+            android:title="Avalie o Aplicativo" />
+        <item
+            android:id="@+id/nav_btn_sharad"
+            android:icon="@drawable/ic_share_24"
+            android:title="@string/menu_share" />
+    </group>
+<!-- Para criar outro divisor basta criar um grupo e colocar os itens nele.
+    <group android:id="@+id/group_todo_2">
+        <item
+            android:id="@+id/nav_btn_via_watsapp"
+            android:icon="@drawable/ic_whatsap"
+            android:title="Compartilar via Whatsapp" />
+    </group> -->
 </menu>

@@ -1,9 +1,9 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
+  background-color: #f1f1f1;
+  text-align:center;
+  margin:0;
+  padding:20px;
 }
 
 .pulse {
@@ -29,7 +29,7 @@ body {
   margin: auto;
   margin-top: 10px;
   padding: 16px;
-  background: #fff;
+  background: #f1f1f1;
   border-radius: 10px;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
 }
@@ -55,14 +55,14 @@ h1 {
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .menu-item {
   background: white;
   border: none;
   padding: 22px;
-  font-size: 16px;
+  font-size: 18px;
   text-align: left;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
@@ -73,7 +73,7 @@ h1 {
 }
 
 .menu-item i {
-  font-size: 18px;
+  font-size: 20px;
   color: #333;
 }
 
