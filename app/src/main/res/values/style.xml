@@ -81,7 +81,13 @@
         <item name="android:contentDescription">@string/todo</item>
         <item name="android:src">@drawable/ic_edit_24</item>
     </style>
-
+    <!-- Base. -->
+    <style name="Theme.MyApplication.Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <!-- Customize your theme here.
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>-->
+    </style>
 
 
 

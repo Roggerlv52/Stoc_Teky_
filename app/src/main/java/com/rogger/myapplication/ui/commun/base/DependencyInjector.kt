@@ -36,6 +36,5 @@ object DependencyInjector {
     fun postRepository(context:Context):PostRepository{
         return PostRepository(PostLocalDataSource(context))
     }
-
      */
 }

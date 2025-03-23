@@ -32,7 +32,6 @@ object DatabaseFake {
                 "User$i",
                 "user$i@gmail.com",
                 "12345678",
-
                 )
             usersAuth.add(user)
         }

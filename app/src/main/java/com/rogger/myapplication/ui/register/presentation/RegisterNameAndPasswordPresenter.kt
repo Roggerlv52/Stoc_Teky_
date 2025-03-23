@@ -13,7 +13,7 @@ class RegisterNameAndPasswordPresenter(
     override fun create(email: String, name: String, password: String, confirme: String) {
 
         val isNameValid = name.length >=3
-        val isPasswordValid = password.length >= 4
+        val isPasswordValid = password.length >= 8
         val isConfirmValid = password == confirme
 
         if (!isNameValid){

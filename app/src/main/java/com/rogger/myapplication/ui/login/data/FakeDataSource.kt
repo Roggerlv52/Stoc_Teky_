@@ -12,6 +12,7 @@ class FakeDataSource : LoginDataSource {
 
             when {
                 userAuth == null -> {
+
                     callback.onFailure("Usuario não encontrado")
                 }
                 userAuth.password != password -> {
