@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tx_new_password_cd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="New password:"
+        android:textSize="17dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/new_password_input"
+        style="@style/Theme.MyApplication.FormEditTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        app:helperTextEnabled="false"
+        app:helperTextTextColor="@color/red" >
+
+        <EditText
+            android:id="@+id/et_new_password_cusd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_edit_text"
+            android:inputType="textPassword"
+            android:maxLength="8"
+            android:padding="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tx_confirm_password_cd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="Confirm password:"
+        android:textSize="17dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirm_password_input"
+        style="@style/Theme.MyApplication.FormEditTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        app:helperTextEnabled="false"
+        app:helperTextTextColor="@color/red" >
+
+        <EditText
+            android:id="@+id/ed_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_edit_text"
+            android:inputType="textPassword"
+            android:maxLength="8"
+            android:padding="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="4dp" >
+
+        <ImageView
+            android:id="@+id/cancel_custon_dialog"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_close_24"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/ok_custon_dialog"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:src="@drawable/ic_done_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

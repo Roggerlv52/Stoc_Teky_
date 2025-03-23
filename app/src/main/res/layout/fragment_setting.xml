@@ -35,6 +35,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/img_edit_name"
                     android:layout_width="25dp"
                     android:layout_height="17dp"
                     android:src="@drawable/ic_edit_24"

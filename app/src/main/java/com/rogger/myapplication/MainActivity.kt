@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         val headerView: View = navView.getHeaderView(0)
 
         // Encontra o TextView dentro do cabeçalho
-        val textViewHeader: TextView = headerView.findViewById(R.id.txt_nav_reader)
+        val textViewHeader: TextView = headerView.findViewById(R.id.txt_name_reader)
         // Agora você pode usar o textViewHeader
         textViewHeader.text = "Nome do usuario aqui"
 
