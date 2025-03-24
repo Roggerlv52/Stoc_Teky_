@@ -1,14 +1,16 @@
 package com.rogger.myapplication.ui.register.data
 
 class RegisterRepository(private val dataSource : RegisterDataSource) {
-    fun create(email : String,callback : RegisterCallback){
-        dataSource.create(email,callback)
+    fun createEmail(email : String, callback : RegisterCallback){
+        dataSource.createEmail(email, callback)
     }
-    fun create(email : String, name : String, password : String, callback : RegisterCallback) {
-        dataSource.create(email, name, password, callback)
+    fun createNameAndPassword(email : String, name : String, password : String, callback : RegisterCallback) {
+        dataSource.createNameAndPassword(email, name, password, callback)
     }
 
-    fun createSetting( name:String ,pais:String,moeda:String,comercio:String,termos:Boolean,callback: RegisterCallback){
-        dataSource.createSetting(name,pais,moeda,comercio,termos,callback)
+    fun createSetting( name: String, pais: String, moeda: String, comercio: String, termos: Boolean, callback: RegisterCallback) {
+        // Passa o email junto com os outros parâmetros para a dataSource
+        dataSource.createSetting( name, pais, moeda, comercio, termos, callback)
     }
+
 }

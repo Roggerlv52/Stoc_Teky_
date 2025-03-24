@@ -7,7 +7,7 @@ import com.rogger.myapplication.ui.commun.base.BaseView
 interface RegisterEmail {
 
     interface Presenter : BasePresenter {
-        fun create(email: String)
+        fun createEmail(email: String)
     }
 
     interface View : BaseView<Presenter> {//criar caso de usos
@@ -15,7 +15,7 @@ interface RegisterEmail {
 
         fun displayEmailFailure(@StringRes emailError : Int?)
 
-        fun onEmailFalure(message : String)
+        fun onEmailFailure(message : String)
 
         fun goToNameAndPasswordScreen(email: String)
 

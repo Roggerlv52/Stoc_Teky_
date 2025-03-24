@@ -2,6 +2,7 @@ package com.rogger.myapplication.ui.register.view
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.print.PrintAttributes
 import android.print.PrintManager
@@ -10,13 +11,13 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.LayoutSettingBinding
 import com.rogger.myapplication.ui.commun.base.DependencyInjector
 import com.rogger.myapplication.ui.register.Settings
 import com.rogger.myapplication.ui.register.presentation.SettingPresenter
+import com.rogger.myapplication.ui.terms.TermsActivity
 
 class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
     companion object {
@@ -38,6 +39,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = LayoutSettingBinding.bind(view)
@@ -53,18 +55,29 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
             with(it) {
 
                 //  fragamentAttachLiestener?.goToWelcomeScreen(name)
-                presenter.create(name, "teste", "teste", "teste", true)
+                presenter.createName(name, "Pt", "Euro", "fabrica", true)
 
                 webView.settings.javaScriptEnabled = true
                 webView.webViewClient = object : WebViewClient() {
                     // Impede que o WebView carregue URLs arbitrárias
 
+
                     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                         return false // Deixa o WebView lidar com a URL
                     }
+
                     // Lida com erros
-                    override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, failingUrl: String?) {
-                        Toast.makeText(context, "Erro ao carregar URL: $description", Toast.LENGTH_SHORT).show()
+                    override fun onReceivedError(
+                        view: WebView?,
+                        errorCode: Int,
+                        description: String?,
+                        failingUrl: String?
+                    ) {
+                        Toast.makeText(
+                            context,
+                            "Erro ao carregar URL: $description",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } // Importante: Defina um WebViewClient
                 webView.addJavascriptInterface(
@@ -76,7 +89,13 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         }
 
     }
+
     override fun onsSuccess(name: String) {
+    }
+
+    override fun onShowError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
     }
 
     // JavaScript Interface
@@ -91,6 +110,13 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
             webView.post {
                 createWebPrintJob(webView)
             }
+        }
+
+        @SuppressLint("SuspiciousIndentation")
+        @JavascriptInterface
+        fun termsScreen() {
+            val intent = Intent(context, TermsActivity::class.java)
+            context.startActivity(intent)
         }
 
         @JavascriptInterface

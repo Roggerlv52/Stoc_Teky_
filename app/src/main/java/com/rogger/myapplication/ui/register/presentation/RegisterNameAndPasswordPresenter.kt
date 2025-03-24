@@ -10,16 +10,16 @@ class RegisterNameAndPasswordPresenter(
     private val repository: RegisterRepository
 ): RegisterNameAndPassword.Presenter{
 
-    override fun create(email: String, name: String, password: String, confirme: String) {
+    override fun createNameAndPassword(email: String, name: String, password: String, confirme: String) {
 
         val isNameValid = name.length >=3
         val isPasswordValid = password.length >= 8
         val isConfirmValid = password == confirme
 
         if (!isNameValid){
-            view?.displayNamelFailure(R.string.invalid_name)
+            view?.displayNameFailure(R.string.invalid_name)
         }else{
-            view?.displayNamelFailure(null)
+            view?.displayNameFailure(null)
         }
 
         if (!isConfirmValid){
@@ -35,7 +35,7 @@ class RegisterNameAndPasswordPresenter(
         if (isNameValid && isPasswordValid && isConfirmValid){
             view?.showProgress(true)
 
-            repository.create(email,name, password, object : RegisterCallback {
+            repository.createNameAndPassword(email,name, password, object : RegisterCallback {
                 override fun onSuccess() {
                     view?.onCreateSuccess(name)
                 }

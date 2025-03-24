@@ -34,7 +34,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
                     activity?.finish()
                 }
                 registerBtnNext.setOnClickListener {
-                    presenter.create(
+                    presenter.createEmail(
                         registerEditEmail.text.toString()
                     )
                 }
@@ -74,7 +74,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
         binding?.progressbarEmail?.visibility = View.GONE
         binding?.registerEditEmailInput?.error = emailError?.let { getString(it) }
     }
-    override fun onEmailFalure(message: String) {
+    override fun onEmailFailure(message: String) {
         binding?.progressbarEmail?.visibility = View.GONE
         binding?.registerEditEmailInput?.error = message
     }

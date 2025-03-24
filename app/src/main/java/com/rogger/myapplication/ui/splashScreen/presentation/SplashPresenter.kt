@@ -9,16 +9,17 @@ class SplashPresenter(
     private val reository : SplashRepository
 ):Splash.Presenter {
     override fun authenticated() {
-        reository.sesssion(object : SplashCallback {
+        reository.checkSession(object : SplashCallback {
             override fun onSuccess() {
                 view?.goToMainScreen()
             }
-            override fun onFalure() {
-                view?.goToLoginScreen()
+
+            override fun onFailure() {
+               view?.goToLoginScreen()
             }
+
         })
     }
-
     override fun onDestroy() {
         view = null
     }

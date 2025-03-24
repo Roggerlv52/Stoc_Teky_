@@ -1,6 +1,7 @@
 package com.rogger.myapplication
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -25,20 +26,27 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.rogger.myapplication.ui.avalie.AvalieActivity
+import com.rogger.myapplication.ui.commun.base.BasePresenter
+import com.rogger.myapplication.ui.commun.base.BaseView
+import com.rogger.myapplication.ui.commun.base.DependencyInjector
+import com.rogger.myapplication.ui.login.view.LoginActivity
+import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 import com.rogger.myapplication.ui.terms.TermsActivity
-import kotlin.math.log
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BaseView<BasePresenter> {
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private var doubleBackToExitPressedOnce = false
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var splashLocalDataSource: SplashLocalDataSource
+    override lateinit var presenter: BasePresenter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // installSplashScreen()
         setContentView(R.layout.activity_main)
 
+        splashLocalDataSource =  SplashLocalDataSource(this)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         //toolbar.setBackgroundColor(android.graphics.Color.TRANSPARENT)
         toolbar.setTitleTextColor(Color.WHITE)
@@ -59,14 +67,13 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
 
         val btnFinish = findViewById<Button>(R.id.drawer_btn_finish)
-        var cont = 0
         btnFinish.setOnClickListener {
-            cont++
-            Toast.makeText(this, "Clique mais uma vez para sair ", Toast.LENGTH_SHORT).show()
-            if (cont == 2) {
-                Toast.makeText(this, "Sessão Encerrada!", Toast.LENGTH_SHORT).show()
-                finishAffinity()
-            }
+
+            Toast.makeText(this, "Sessão Encerrada!", Toast.LENGTH_SHORT).show()
+
+            splashLocalDataSource.clearSession()
+
+            startActivity(Intent(this, LoginActivity::class.java))
         }
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_home, R.id.nav_helper, R.id.nav_setting),
@@ -75,8 +82,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Configura o callback para o botão de voltar
-        screenFinish()
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_btn_site -> {
@@ -93,14 +98,24 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.closeDrawers()
                     true
                 }
+
                 R.id.nav_btn_termos -> {
-                   val intent = Intent(this, TermsActivity::class.java)
+                    val intent = Intent(this, TermsActivity::class.java)
                     startActivity(intent)
                     drawerLayout.closeDrawers()
                     true
                 }
+
                 R.id.nav_btn_avaliar -> {
-                    // Ação para o item "Avaliar"
+                    val intent = Intent(this, AvalieActivity::class.java)
+                    val options = ActivityOptions.makeCustomAnimation(
+                        this,
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out
+                    )
+                    startActivity(intent, options.toBundle())
+
+
                     drawerLayout.closeDrawers()
                     false
                 }
@@ -126,28 +141,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    private fun screenFinish() {
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (doubleBackToExitPressedOnce) {
-                    finishAffinity() // Encerra todas as atividades do aplicativo
-                    return
-                }
-
-                doubleBackToExitPressedOnce = true
-                Toast.makeText(
-                    this@MainActivity,
-                    "Clique mais uma vez para sair ",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                Handler(Looper.getMainLooper()).postDelayed({
-                    doubleBackToExitPressedOnce = false
-                }, 2000) // Tempo de espera de 2 segundos
-            }
-        })
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -182,4 +175,11 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace() // Imprime o erro no log para depuração
         }
     }
+
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
+
 }

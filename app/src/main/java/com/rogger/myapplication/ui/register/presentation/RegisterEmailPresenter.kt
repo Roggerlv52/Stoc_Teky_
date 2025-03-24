@@ -11,7 +11,7 @@ class RegisterEmailPresenter(
     private val repository: RegisterRepository
 ): RegisterEmail.Presenter {
 
-    override fun create(email: String) {
+    override fun createEmail(email: String) {
 
         val isEmailValid = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
@@ -22,17 +22,20 @@ class RegisterEmailPresenter(
         }
 
         if (isEmailValid){
-            view?.showProgress(true)
-
-            repository.create(email, object : RegisterCallback {
+            repository.createEmail(email, object : RegisterCallback {
                 override fun onSuccess() {
                     view?.goToNameAndPasswordScreen(email)
                 }
                 override fun onFailure(message: String) {
-                    view?.onEmailFalure(message)
+                    // Se o email já estiver cadastrado, utiliza o resource de string para exibir o erro
+                    if (message.equals("Usuário já cadastrado", ignoreCase = true)) {
+                        view?.displayEmailFailure(R.string.email_ja_cadastrado)
+                    } else {
+                        view?.onEmailFailure(message)
+                    }
                 }
                 override fun onComplete() {
-                    view?.showProgress(true)
+                    view?.showProgress(false) // Corrigido para falso
                 }
             })
         }

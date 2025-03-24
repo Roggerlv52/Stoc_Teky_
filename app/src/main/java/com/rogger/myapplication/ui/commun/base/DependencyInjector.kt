@@ -1,25 +1,32 @@
 package com.rogger.myapplication.ui.commun.base
 
-import com.rogger.myapplication.ui.login.data.FakeDataSource
+import android.content.Context
+import com.rogger.myapplication.ui.login.Login
+import com.rogger.myapplication.ui.login.data.LoginFireDataSouce
 import com.rogger.myapplication.ui.login.data.LoginRepository
-import com.rogger.myapplication.ui.register.data.FakeRegisterDataSource
+import com.rogger.myapplication.ui.login.presentation.LoginPresenter
+import com.rogger.myapplication.ui.register.data.FireRegisterDataSource
 import com.rogger.myapplication.ui.register.data.RegisterRepository
-import com.rogger.myapplication.ui.splashScreen.data.FakeLocalDataSource
+import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 import com.rogger.myapplication.ui.splashScreen.data.SplashRepository
 
 object DependencyInjector {
 
-    fun splashRepository() : SplashRepository {
-        return SplashRepository(FakeLocalDataSource())
+    fun splashRepository(context: Context) : SplashRepository {
+        return SplashRepository(SplashLocalDataSource(context))
     }
 
     fun loginRepository() : LoginRepository {
-        return LoginRepository(FakeDataSource())
+        return LoginRepository(LoginFireDataSouce())
+    }
+    fun loginPresenter(view: Login.View?, context: Context): Login.Presenter { // Adiciona o método loginPresenter
+        val splashLocalDataSource = SplashLocalDataSource(context)
+        return LoginPresenter(view, loginRepository(), splashLocalDataSource)
     }
 
 
     fun registerEmailRepositoy() : RegisterRepository {
-        return RegisterRepository(FakeRegisterDataSource())
+        return RegisterRepository(FireRegisterDataSource())
     }
     /*
     fun searchRepository():SearchRepository{

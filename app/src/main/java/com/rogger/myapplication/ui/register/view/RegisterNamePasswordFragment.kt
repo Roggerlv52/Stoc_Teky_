@@ -43,7 +43,8 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
                 }
                 registerBtnPassword.setOnClickListener {
 
-                    presenter.create(email,registerEditName.text.toString(), registerEditPassword.text.toString(), registerEditComfirme.text.toString())
+                    presenter.createNameAndPassword(email,registerEditName.text.toString(),
+                        registerEditPassword.text.toString(), registerEditComfirme.text.toString())
 
                 }
                 registerEditName.addTextChangedListener(watcher)
@@ -51,7 +52,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
                 registerEditComfirme.addTextChangedListener(watcher)
 
                 registerEditName.addTextChangedListener(TxtWatcher {
-                    displayNamelFailure(null)
+                    displayNameFailure(null)
                 })
                 registerEditPassword.addTextChangedListener(TxtWatcher {
                     displayPasswordFailure(null)
@@ -99,8 +100,6 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
 
             }
         }
-
-
     }
 
     override fun onAttach(context: Context) {
@@ -111,14 +110,10 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
     }
 
     override fun showProgress(enable: Boolean) {
-        if (enable) {
-            _binding?.progressbarEmailAndPassword?.visibility = View.VISIBLE
-        } else {
-            _binding?.progressbarEmailAndPassword?.visibility = View.VISIBLE
-        }
+            _binding?.progressbarEmailAndPassword?.visibility = if (enable) View.VISIBLE else View.GONE
     }
 
-    override fun displayNamelFailure(nameError: Int?) {
+    override fun displayNameFailure(nameError: Int?) {
         _binding?.progressbarEmailAndPassword?.visibility = View.GONE
         _binding?.registerEditNameInput?.error = nameError?.let { getString(it) }
     }

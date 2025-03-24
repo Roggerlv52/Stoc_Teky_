@@ -1,5 +1,7 @@
 package com.rogger.myapplication.ui.splashScreen.view
 
+import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import com.rogger.myapplication.ui.login.view.LoginActivity
 import com.rogger.myapplication.ui.splashScreen.Splash
 import com.rogger.myapplication.ui.splashScreen.presentation.SplashPresenter
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity(), Splash.View {
     private lateinit var  binding : ActivitySplashBinding
     override  lateinit var presenter: Splash.Presenter
@@ -20,7 +23,7 @@ class SplashActivity : AppCompatActivity(), Splash.View {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val repository = DependencyInjector.splashRepository()
+        val repository = DependencyInjector.splashRepository(this)
         presenter = SplashPresenter(this,repository)
 
         binding.splashImg.animate().apply {
@@ -59,8 +62,11 @@ class SplashActivity : AppCompatActivity(), Splash.View {
                 val intent = Intent(baseContext, LoginActivity::class.java)
                 //para tirar ativvidade da frente
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                val options = ActivityOptions.makeCustomAnimation(baseContext,
+                    android.R.anim.fade_in,
+                    android.R.anim.fade_out
+                )
+                startActivity(intent, options.toBundle())
             })
             duration = 2000
             startDelay = 500

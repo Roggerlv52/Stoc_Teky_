@@ -16,6 +16,10 @@
             android:id="@+id/nav_helper"
             android:icon="@drawable/sino_active_24"
             android:title="@string/menu_central" />
+        <item
+            android:id="@+id/nav_gestao"
+            android:icon="@drawable/ic_edit_square_24"
+            android:title="@string/gestao" />
     </group>
 
     <group android:id="@+id/group_todo_1">

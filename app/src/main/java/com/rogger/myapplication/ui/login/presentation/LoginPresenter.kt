@@ -1,16 +1,17 @@
 package com.rogger.myapplication.ui.login.presentation
 
-import android.util.Log
 import android.util.Patterns
 import com.rogger.myapplication.R
 import com.rogger.myapplication.molds.UserAuth
 import com.rogger.myapplication.ui.login.Login
 import com.rogger.myapplication.ui.login.data.LoginCallback
 import com.rogger.myapplication.ui.login.data.LoginRepository
+import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 
 class LoginPresenter(
     private var view: Login.View?,
-    private var repository: LoginRepository
+    private var repository: LoginRepository,
+    private val splashLocalDataSource: SplashLocalDataSource // Adicione o SplashLocalDataSource
 ) : Login.Presenter {
 
     override fun login(email: String, password: String) {
@@ -29,21 +30,27 @@ class LoginPresenter(
             view?.displayPasswordFailure(null)
         }
         if (isEmailValid && isPasswordValid) {
+            view?.showProgress(true)
             repository.logon(email, password, object : LoginCallback {
+
                 override fun onSuccess(userAuth: UserAuth) {
                     view?.onUserAuthenticated()
+                    splashLocalDataSource.setLoggedIn(true) // Define o login bem-sucedido
+                    view?.showProgress(false)
                 }
 
                 override fun onFailure(message: String) {
-                    view?.onUserUnauthoried(message)
+                    view?.onUserUnauthorized(message)
+                    view?.showProgress(false)
+                    view?.displayEmailFailure(R.string.user_not_faund)
 
                 }
-
                 override fun onComplete() {
                     view?.showProgress(true)
                 }
-
             })
+        }else{
+            view?.showProgress(false)
         }
     }
 

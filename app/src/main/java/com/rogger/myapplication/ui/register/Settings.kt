@@ -5,12 +5,13 @@ import com.rogger.myapplication.ui.commun.base.BaseView
 
 interface Settings {
     interface Presenter : BasePresenter {
-        fun create(name: String, pais: String, moeda: String, comercio: String, termos: Boolean)
+        fun createName(name: String, pais: String, moeda: String, comercio: String, termos: Boolean)
     }
 
     //criar caso de usos
     interface View : BaseView<Presenter> {
         fun onsSuccess(name: String)
+        fun onShowError(message: String)
     }
 
 }

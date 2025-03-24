@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.rogger.myapplication.MainActivity
 import com.rogger.myapplication.R
@@ -26,7 +27,7 @@ class LoginActivity : BaseActivit(), Login.View {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         binding?.loginBtnEnter?.isEnabled = false
-        presenter = LoginPresenter(this, DependencyInjector.loginRepository())
+        presenter = DependencyInjector.loginPresenter(this, this)
 
         binding?.let {
 
@@ -78,6 +79,7 @@ class LoginActivity : BaseActivit(), Login.View {
     }
 
     private fun goToRegisterScreen() {
+        // Toast.makeText(this, "Navegando para a tela de cadastro", Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, RegisterActivity::class.java))
     }
 
@@ -85,15 +87,18 @@ class LoginActivity : BaseActivit(), Login.View {
         if (enabled) {
             binding?.progressbarLogin?.visibility = View.VISIBLE
         } else {
-            binding?.progressbarLogin?.visibility = View.GONE
+            binding?.progressbarLogin?.visibility = View.INVISIBLE
         }
     }
 
     override fun displayEmailFailure(emailError: Int?) {
+        binding?.progressbarLogin?.visibility = View.GONE
         binding?.loginEditEmailInput?.error = emailError?.let { getString(it) }
+
     }
 
     override fun displayPasswordFailure(passwordError: Int?) {
+        binding?.progressbarLogin?.visibility = View.GONE
         binding?.loginEditPasswordInput?.error = passwordError?.let { getString(it) }
     }
 
@@ -103,7 +108,7 @@ class LoginActivity : BaseActivit(), Login.View {
         startActivity(intent)
     }
 
-    override fun onUserUnauthoried(message: String) {
+    override fun onUserUnauthorized(message: String) {
         binding?.progressbarLogin?.visibility = View.GONE
     }
 

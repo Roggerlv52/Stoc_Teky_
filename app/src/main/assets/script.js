@@ -52,8 +52,13 @@ function pergarClick() {
         console.error("Objeto Android ou função gotoWelcoScreen não encontrados. Você está executando em um WebView?");
         alert("Erro: Não foi possível prosseguir. O aplicativo não está em um ambiente Android.");
     }
+} 
+function goToTerms(){
+   Android.termsScreen();
 }
-
+document.getElementById("acesse-termos").addEventListener("click",function(){
+    goToTerms();
+});
 document.getElementById("termos").addEventListener("change", function () {
     document.getElementById("cadastrar").disabled = !this.checked;
 });
