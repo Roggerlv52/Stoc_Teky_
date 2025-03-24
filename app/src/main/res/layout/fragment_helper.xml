@@ -64,7 +64,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Entrada no Estoque"
+                        android:text="@string/instock"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -74,7 +74,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Estoque Alto"
+                        android:text="@string/stockup"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -84,7 +84,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Estoque Baixo"
+                        android:text="@string/stockdonw"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -94,7 +94,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Previsão do Fim de Estoque"
+                        android:text="@string/previwstock"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -104,7 +104,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Produtos em Vencimento"
+                        android:text="@string/productexpiration"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -114,7 +114,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Promoções de Fornecedores"
+                        android:text="@string/supplierpromotions"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -124,7 +124,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Saída do Estoque"
+                        android:text="@string/stockoutput"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -134,7 +134,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Sugestão de Doação do Estoque Excedente"
+                        android:text="@string/donation"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -144,7 +144,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Sugestão de Reposição"
+                        android:text="@string/replacement"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
                     <androidx.appcompat.widget.SwitchCompat
@@ -154,7 +154,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:textSize="18dp"
-                        android:text="Vencimento de Locação"
+                        android:text="@string/rental"
                         app:thumbTint="@color/switch_thumb_color"
                         app:trackTint="@color/switch_track_color" />
 

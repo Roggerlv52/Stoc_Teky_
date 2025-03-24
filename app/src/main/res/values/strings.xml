@@ -48,4 +48,14 @@
     <string name="finish_screen">Encerrar Sessão</string>
     <string name="menu_helper">Central de Apoio e Alertas</string>
     <string name="print" translatable="false">Print</string>
+    <string name="instock">Entrada no Estoque</string>
+    <string name="stockup">Estoque Alto</string>
+    <string name="stockdonw">Estoque Baixo</string>
+    <string name="previwstock">Previsão de Fim de Estoque</string>
+    <string name="productexpiration">Produtos em Vencimento</string>
+    <string name="supplierpromotions">Promoções de Fornecedores</string>
+    <string name="stockoutput">Saída de Estoque</string>
+    <string name="donation">Sugestão de Doação de Estoque</string>
+    <string name="replacement">Sugestão de Reposição</string>
+    <string name="rental">Vencimento de Locação</string>
 </resources>
