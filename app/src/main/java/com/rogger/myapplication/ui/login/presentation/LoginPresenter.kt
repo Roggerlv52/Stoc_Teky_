@@ -45,6 +45,12 @@ class LoginPresenter(
                     view?.displayEmailFailure(R.string.user_not_faund)
 
                 }
+
+                override fun onFailurePassword(message: String) {
+                    view?.showProgress(false)
+                    view?.displayPasswordFailure(R.string.password_error)
+                }
+
                 override fun onComplete() {
                     view?.showProgress(true)
                 }

@@ -26,13 +26,13 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
 
 
     private var binding: LayoutSettingBinding? = null
-    private var fragamentAttachLiestener: FragamentAttachLiestener? = null
+    private var fragamentAttachLiestener: FragmentAttachLiestener? = null
 
     override lateinit var presenter: Settings.Presenter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is FragamentAttachLiestener) {
+        if (context is FragmentAttachLiestener) {
             fragamentAttachLiestener = context
         } else {
             throw RuntimeException("$context deve implementar FragamentAttachLiestener")
@@ -46,7 +46,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         val name = arguments?.getString(KEY_NAMESETTING)
             ?: throw IllegalArgumentException("nome not found")
 
-        val repositer = DependencyInjector.registerEmailRepositoy()
+        val repositer = DependencyInjector.registerEmailRepository()
         presenter = SettingPresenter(this, repositer)
 
         binding = LayoutSettingBinding.bind(view)
@@ -54,8 +54,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         binding?.let {
             with(it) {
 
-                //  fragamentAttachLiestener?.goToWelcomeScreen(name)
-                presenter.createName(name, "Pt", "Euro", "fabrica", true)
+                presenter.createData(name, "Pt", "Euro", "fabrica", true)
 
                 webView.settings.javaScriptEnabled = true
                 webView.webViewClient = object : WebViewClient() {
@@ -101,7 +100,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
     // JavaScript Interface
     class WebAppInterface(
         private val context: Context, private val webView: WebView, private var name: String,
-        private var fragamentAttachLiestener: FragamentAttachLiestener?
+        private var fragamentAttachLiestener: FragmentAttachLiestener?
     ) {
 
         @JavascriptInterface

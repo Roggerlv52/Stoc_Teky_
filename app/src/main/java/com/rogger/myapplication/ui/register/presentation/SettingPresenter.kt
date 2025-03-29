@@ -9,7 +9,7 @@ class SettingPresenter(
     private var repository: RegisterRepository
 ) : Settings.Presenter {
 
-    override fun createName(name: String, pais: String, moeda: String, comercio: String, termos: Boolean) {
+    override fun createData(name: String, pais: String, moeda: String, comercio: String, termos: Boolean) {
 
         repository.createSetting(name,pais, moeda, comercio, termos, object : RegisterCallback {
 
@@ -21,6 +21,7 @@ class SettingPresenter(
                 view?.onShowError(message)
             }
             override fun onComplete() {
+
             }
 
         })

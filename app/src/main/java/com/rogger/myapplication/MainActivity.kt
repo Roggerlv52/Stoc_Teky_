@@ -26,6 +26,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.rogger.myapplication.ui.avalie.AvalieActivity
 import com.rogger.myapplication.ui.commun.base.BasePresenter
 import com.rogger.myapplication.ui.commun.base.BaseView
@@ -34,14 +36,14 @@ import com.rogger.myapplication.ui.login.view.LoginActivity
 import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 import com.rogger.myapplication.ui.terms.TermsActivity
 
-class MainActivity : AppCompatActivity(), BaseView<BasePresenter> {
+class MainActivity : AppCompatActivity(){
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var splashLocalDataSource: SplashLocalDataSource
-    override lateinit var presenter: BasePresenter
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -60,9 +62,32 @@ class MainActivity : AppCompatActivity(), BaseView<BasePresenter> {
         val headerView: View = navView.getHeaderView(0)
 
         // Encontra o TextView dentro do cabeçalho
-        val textViewHeader: TextView = headerView.findViewById(R.id.txt_name_reader)
-        // Agora você pode usar o textViewHeader
-        textViewHeader.text = "Nome do usuario aqui"
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+
+        if (uid != null) {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("users").document(uid).get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val name = document.getString("name")
+                        val email = document.getString("email")
+
+                        // Agora atualiza a UI
+                        val headerView = navView.getHeaderView(0)
+                        val textViewHeader: TextView = headerView.findViewById(R.id.txt_name_reader)
+                        val textViewEmail: TextView = headerView.findViewById(R.id.txt_email_reader)
+                        textViewHeader.text = "$name"
+                        textViewEmail.text = "$email"
+                    } else {
+                        Log.d("HeaderInfo", "Documento não encontrado")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("HeaderInfo", "Erro ao buscar usuário", exception)
+                }
+        }
+
 
         drawerLayout = findViewById(R.id.drawer_layout)
 
@@ -76,7 +101,7 @@ class MainActivity : AppCompatActivity(), BaseView<BasePresenter> {
             startActivity(Intent(this, LoginActivity::class.java))
         }
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_helper, R.id.nav_setting),
+            setOf(R.id.nav_home, R.id.nav_helper, R.id.nav_setting, R.id.nav_gestao),
             drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -175,11 +200,5 @@ class MainActivity : AppCompatActivity(), BaseView<BasePresenter> {
             e.printStackTrace() // Imprime o erro no log para depuração
         }
     }
-
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
-    }
-
 
 }

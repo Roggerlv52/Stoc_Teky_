@@ -20,7 +20,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
         const val KEY_EMAIL = "key_email"
     }
 
-    private var fragamentAttachLiestener: FragamentAttachLiestener? = null
+    private var fragamentAttachListener: FragmentAttachLiestener? = null
     private var _binding: FragmentRegisterNamePasswordBinding? = null
 
     override lateinit var presenter: RegisterNameAndPassword.Presenter
@@ -31,7 +31,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
 
         _binding = FragmentRegisterNamePasswordBinding.bind(view)
 
-        val repository = DependencyInjector.registerEmailRepositoy()
+        val repository = DependencyInjector.registerEmailRepository()
         presenter = RegisterNameAndPasswordPresenter(this, repository)
 
         val email =
@@ -42,10 +42,12 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
                     activity?.finish()
                 }
                 registerBtnPassword.setOnClickListener {
-
-                    presenter.createNameAndPassword(email,registerEditName.text.toString(),
-                        registerEditPassword.text.toString(), registerEditComfirme.text.toString())
-
+                    presenter.createNameAndPassword(
+                        email,
+                        registerEditName.text.toString(),
+                        registerEditPassword.text.toString(),
+                        registerEditComfirme.text.toString()
+                    )
                 }
                 registerEditName.addTextChangedListener(watcher)
                 registerEditPassword.addTextChangedListener(watcher)
@@ -104,8 +106,8 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is FragamentAttachLiestener) {
-            fragamentAttachLiestener = context
+        if (context is FragmentAttachLiestener) {
+            fragamentAttachListener = context
         }
     }
 
@@ -129,16 +131,16 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
 
     override fun onCreateSuccess(name: String) {
         _binding?.progressbarEmailAndPassword?.visibility = View.GONE
-        fragamentAttachLiestener?.goToLSettingScreen(name)
+        fragamentAttachListener?.goToLSettingScreen(name)
 
     }
 
 
     private val watcher = TxtWatcher {
         _binding?.registerBtnPassword?.isEnabled =
-            _binding?.registerEditName?.text.toString().isNotEmpty()
-                    && _binding?.registerEditPassword?.text.toString().isNotEmpty()
-                    && _binding?.registerEditComfirme?.text.toString().isNotEmpty()
+            _binding?.registerEditName?.text.toString().isNotEmpty() &&
+                    _binding?.registerEditPassword?.text.toString().isNotEmpty() &&
+                    _binding?.registerEditComfirme?.text.toString().isNotEmpty()
     }
 
 }

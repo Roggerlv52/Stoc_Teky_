@@ -2,7 +2,7 @@ package com.rogger.myapplication.ui.commun.base
 
 import android.content.Context
 import com.rogger.myapplication.ui.login.Login
-import com.rogger.myapplication.ui.login.data.LoginFireDataSouce
+import com.rogger.myapplication.ui.login.data.LoginFireDataSource
 import com.rogger.myapplication.ui.login.data.LoginRepository
 import com.rogger.myapplication.ui.login.presentation.LoginPresenter
 import com.rogger.myapplication.ui.register.data.FireRegisterDataSource
@@ -17,7 +17,7 @@ object DependencyInjector {
     }
 
     fun loginRepository() : LoginRepository {
-        return LoginRepository(LoginFireDataSouce())
+        return LoginRepository(LoginFireDataSource())
     }
     fun loginPresenter(view: Login.View?, context: Context): Login.Presenter { // Adiciona o método loginPresenter
         val splashLocalDataSource = SplashLocalDataSource(context)
@@ -25,7 +25,7 @@ object DependencyInjector {
     }
 
 
-    fun registerEmailRepositoy() : RegisterRepository {
+    fun registerEmailRepository() : RegisterRepository {
         return RegisterRepository(FireRegisterDataSource())
     }
     /*

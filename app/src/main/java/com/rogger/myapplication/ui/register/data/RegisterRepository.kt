@@ -9,7 +9,6 @@ class RegisterRepository(private val dataSource : RegisterDataSource) {
     }
 
     fun createSetting( name: String, pais: String, moeda: String, comercio: String, termos: Boolean, callback: RegisterCallback) {
-        // Passa o email junto com os outros parâmetros para a dataSource
         dataSource.createSetting( name, pais, moeda, comercio, termos, callback)
     }
 
