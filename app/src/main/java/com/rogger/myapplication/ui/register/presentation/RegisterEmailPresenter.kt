@@ -22,6 +22,7 @@ class RegisterEmailPresenter(
         }
 
         if (isEmailValid){
+            view?.showProgress(true)
             repository.createEmail(email, object : RegisterCallback {
                 override fun onSuccess() {
                     view?.goToNameAndPasswordScreen(email)

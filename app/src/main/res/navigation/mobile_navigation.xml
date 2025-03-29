@@ -16,6 +16,11 @@
         android:label="@string/menu_helper"
         tools:layout="@layout/fragment_helper" />
     <fragment
+        android:id="@+id/nav_gestao"
+        android:name="com.rogger.myapplication.ui.gestao.FragmentGestao"
+        android:label="@string/menu_gestao"
+        tools:layout="@layout/fragment_gestao" />
+    <fragment
         android:id="@+id/nav_setting"
         android:name="com.rogger.myapplication.ui.setting.SettingFragment"
         android:label="@string/menu_setting"

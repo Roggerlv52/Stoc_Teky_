@@ -52,7 +52,7 @@
     <string name="stockup" translatable="false">Estoque Alto</string>
     <string name="stockdonw" translatable="false">Estoque Baixo</string>
 
-    <string name="previwstock">Previsão de Fim de Estoque</string>
+    <string name="previwstock" translatable="false">Previsão de Fim de Estoque</string>
     <string name="productexpiration">Produtos em Vencimento</string>
     <string name="supplierpromotions">Promoções de Fornecedores</string>
     <string name="stockoutput">Saída de Estoque</string>
@@ -62,4 +62,7 @@
     <string name="user_not_faund">Usuario não encontrado</string>
     <string name="gestao">Gestão de Campos</string>
     <string name="email_ja_cadastrado">E-mail já cadastrado</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_gestao">Gestao de Contas</string>
+    <string name="password_error">Senha incorreta!</string>
 </resources>

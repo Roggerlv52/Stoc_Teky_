@@ -9,7 +9,7 @@ import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.ActivityRegisterBinding
 import com.rogger.myapplication.ui.commun.extension.hidekyboard
 
-class RegisterActivity : AppCompatActivity(),FragamentAttachLiestener {
+class RegisterActivity : AppCompatActivity(),FragmentAttachLiestener {
     private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class RegisterActivity : AppCompatActivity(),FragamentAttachLiestener {
         val fragment = RegisterEmailFragment()    //apply  para executar metados
         replaceFragment(fragment)
     }
-    override fun goToNameAndpasswordScreen(email: String) {
+    override fun goToNameAndPasswordScreen(email: String) {
         val fragment = RegisterNamePasswordFragment().apply {
             arguments = Bundle().apply {
                 putString(RegisterNamePasswordFragment.KEY_EMAIL,email)

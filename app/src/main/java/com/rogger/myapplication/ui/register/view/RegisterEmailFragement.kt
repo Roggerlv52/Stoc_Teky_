@@ -14,7 +14,7 @@ import com.rogger.myapplication.ui.register.presentation.RegisterEmailPresenter
 class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
     RegisterEmail.View {
     private var binding: FragmentRegisterEmailBinding? = null
-    private var fragamentAttachLiestener : FragamentAttachLiestener? = null
+    private var fragamentAttachLiestener : FragmentAttachLiestener? = null
 
     override lateinit var presenter: RegisterEmail.Presenter
 
@@ -23,7 +23,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
 
         binding = FragmentRegisterEmailBinding.bind(view)
 
-        val repositer = DependencyInjector.registerEmailRepositoy()
+        val repositer = DependencyInjector.registerEmailRepository()
         presenter = RegisterEmailPresenter(this,repositer)
 
         //buscar as referencias em baixo
@@ -48,7 +48,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is FragamentAttachLiestener){
+        if(context is FragmentAttachLiestener){
             fragamentAttachLiestener = context
         }
     }
@@ -64,11 +64,8 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
     }
 
     override fun showProgress(enabled: Boolean) {
-        if (enabled) {
-            binding?.progressbarEmail?.visibility = View.VISIBLE
-        } else {
-            binding?.progressbarEmail?.visibility = View.GONE
-        } //
+
+        binding?.progressbarEmail?.visibility = if (enabled) View.VISIBLE else View.GONE
     }
     override fun displayEmailFailure(emailError: Int?) {
         binding?.progressbarEmail?.visibility = View.GONE
@@ -79,8 +76,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email),
         binding?.registerEditEmailInput?.error = message
     }
     override fun goToNameAndPasswordScreen(email: String) {
-        //ir para proxima tela
         binding?.progressbarEmail?.visibility = View.GONE
-        fragamentAttachLiestener?.goToNameAndpasswordScreen(email)
+        fragamentAttachLiestener?.goToNameAndPasswordScreen(email)
     }
 }

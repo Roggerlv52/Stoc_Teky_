@@ -10,13 +10,10 @@ interface RegisterEmail {
         fun createEmail(email: String)
     }
 
-    interface View : BaseView<Presenter> {//criar caso de usos
-    fun showProgress(enable : Boolean)
-
-        fun displayEmailFailure(@StringRes emailError : Int?)
-
-        fun onEmailFailure(message : String)
-
+    interface View : BaseView<Presenter> {
+        fun showProgress(enable: Boolean)
+        fun displayEmailFailure(@StringRes emailError: Int?)
+        fun onEmailFailure(message: String)
         fun goToNameAndPasswordScreen(email: String)
 
     }

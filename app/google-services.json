@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "510334309711",
+    "project_id": "stoc-tecky",
+    "storage_bucket": "stoc-tecky.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510334309711:android:47de703112ad916b66a13a",
+        "android_client_info": {
+          "package_name": "com.rogger.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBed9-A01hAklHNKfODNKDXX0b0n2o-29s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

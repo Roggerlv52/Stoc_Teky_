@@ -100,6 +100,7 @@ class LoginActivity : BaseActivit(), Login.View {
     override fun displayPasswordFailure(passwordError: Int?) {
         binding?.progressbarLogin?.visibility = View.GONE
         binding?.loginEditPasswordInput?.error = passwordError?.let { getString(it) }
+
     }
 
     override fun onUserAuthenticated() {
