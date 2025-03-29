@@ -52,12 +52,15 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.support.annotations)
+
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.auth)
+    implementation(libs.play.services.auth)
 
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
 
+    implementation(libs.glide)
 
     implementation(libs.googleid)
     implementation(libs.androidx.annotation)
@@ -71,3 +74,4 @@ dependencies {
     implementation(libs.androidx.room.runtime)
 
 }
+

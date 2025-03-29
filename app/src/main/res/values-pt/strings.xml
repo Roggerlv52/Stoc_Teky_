@@ -44,7 +44,6 @@
     <string name="welcome_to_my_app"><b>Bem-Vindo!\n%1$s</b></string>
     <string name="next_av">Avançar</string>
     <string name="more">Outros\n</string>
-    <string name="menu_central">Gestão de Alertas</string>
     <string name="finish_screen">Encerrar Sessão</string>
-    <string name="menu_helper">Central de Apoio e Alertas</string>
+    <string name="menu_helper_alerta">Gestão de Alertas</string>
 </resources>

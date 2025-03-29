@@ -9,24 +9,25 @@ import com.rogger.myapplication.ui.register.data.RegisterRepository
 class RegisterEmailPresenter(
     private var view: RegisterEmail.View?,
     private val repository: RegisterRepository
-): RegisterEmail.Presenter {
+) : RegisterEmail.Presenter {
 
     override fun createEmail(email: String) {
 
         val isEmailValid = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
-        if (!isEmailValid){
+        if (!isEmailValid) {
             view?.displayEmailFailure(R.string.invalid_email)
-        }else{
+        } else {
             view?.displayEmailFailure(null)
         }
 
-        if (isEmailValid){
+        if (isEmailValid) {
             view?.showProgress(true)
             repository.createEmail(email, object : RegisterCallback {
                 override fun onSuccess() {
                     view?.goToNameAndPasswordScreen(email)
                 }
+
                 override fun onFailure(message: String) {
                     // Se o email já estiver cadastrado, utiliza o resource de string para exibir o erro
                     if (message.equals("Usuário já cadastrado", ignoreCase = true)) {
@@ -35,6 +36,7 @@ class RegisterEmailPresenter(
                         view?.onEmailFailure(message)
                     }
                 }
+
                 override fun onComplete() {
                     view?.showProgress(false) // Corrigido para falso
                 }

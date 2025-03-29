@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.print.PrintAttributes
 import android.print.PrintManager
+import android.util.Log
 import android.view.View
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
@@ -23,17 +24,17 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
     companion object {
         const val KEY_NAMESETTING = "key_name_setting"
     }
-
-
+    private var name: String? = null
+    private var emailg: String? = null
     private var binding: LayoutSettingBinding? = null
-    private var fragamentAttachLiestener: FragmentAttachLiestener? = null
+    private var fragmentAttachLiestener: FragmentAttachLiestener? = null
 
     override lateinit var presenter: Settings.Presenter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is FragmentAttachLiestener) {
-            fragamentAttachLiestener = context
+            fragmentAttachLiestener = context
         } else {
             throw RuntimeException("$context deve implementar FragamentAttachLiestener")
         }
@@ -42,9 +43,15 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding = LayoutSettingBinding.bind(view)
-        val name = arguments?.getString(KEY_NAMESETTING)
+
+        name = arguments?.getString(KEY_NAMESETTING)
             ?: throw IllegalArgumentException("nome not found")
+        if (name == null) {
+            name = arguments?.getString("EXTRA_NAME")
+            emailg = arguments?.getString("EXTRA_EMAIL")
+        }
 
         val repositer = DependencyInjector.registerEmailRepository()
         presenter = SettingPresenter(this, repositer)
@@ -54,9 +61,9 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         binding?.let {
             with(it) {
 
-                presenter.createData(name, "Pt", "Euro", "fabrica", true)
-
                 webView.settings.javaScriptEnabled = true
+                webView.settings.domStorageEnabled = true // Adicione esta linha
+
                 webView.webViewClient = object : WebViewClient() {
                     // Impede que o WebView carregue URLs arbitrárias
 
@@ -80,27 +87,27 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
                     }
                 } // Importante: Defina um WebViewClient
                 webView.addJavascriptInterface(
-                    WebAppInterface(requireContext(), webView, name, fragamentAttachLiestener),
+                    WebAppInterface(fragmentAttachLiestener!!, webView),
                     "Android"
                 ) // Adicione a interface JavaScript
                 webView.loadUrl("file:///android_asset/index.html")
             }
         }
-
     }
 
     override fun onsSuccess(name: String) {
+       // fragmentAttachLiestener?.goToLSettingScreen(name)
     }
 
     override fun onShowError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        Log.d("SettingFragment", "onShowError: $message")
 
     }
-
     // JavaScript Interface
-    class WebAppInterface(
-        private val context: Context, private val webView: WebView, private var name: String,
-        private var fragamentAttachLiestener: FragmentAttachLiestener?
+    inner class WebAppInterface(
+        private val fragmentAttachLiestener: FragmentAttachLiestener,
+        private val webView: WebView
     ) {
 
         @JavascriptInterface
@@ -114,18 +121,24 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         @SuppressLint("SuspiciousIndentation")
         @JavascriptInterface
         fun termsScreen() {
-            val intent = Intent(context, TermsActivity::class.java)
-            context.startActivity(intent)
+            val intent = Intent(requireContext(), TermsActivity::class.java)
+            context?.startActivity(intent)
         }
 
         @JavascriptInterface
-        fun gotoWelcoScreen() {
-            fragamentAttachLiestener?.goToWelcomeScreen(name) // Navegue para a tela de boas-vindas
+        fun gotoWelcoScreen(pais: String, moeda: String, segmento: String, termos: Boolean) {
+            activity?.runOnUiThread {
+                presenter.createData(name!!, pais, moeda, segmento, termos)
+                fragmentAttachLiestener.goToWelcomeScreen(name!!)
+
+              // Toast.makeText(requireContext(), "Dados salvos com sucesso!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         private fun createWebPrintJob(webView: WebView) {
-            val printManager = context.getSystemService(Context.PRINT_SERVICE) as PrintManager
-            val jobName = "${context.getString(R.string.app_name)} Document"
+            val printManager =
+                requireContext().getSystemService(Context.PRINT_SERVICE) as PrintManager
+            val jobName = "${requireContext().getString(R.string.app_name)} Document"
             val printAdapter = webView.createPrintDocumentAdapter(jobName)
             val printAttributes =
                 PrintAttributes.Builder().setMediaSize(PrintAttributes.MediaSize.ISO_A4)

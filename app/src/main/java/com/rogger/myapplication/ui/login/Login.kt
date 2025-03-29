@@ -1,5 +1,6 @@
 package com.rogger.myapplication.ui.login
 
+import android.content.Context
 import android.support.annotation.StringRes
 import com.rogger.myapplication.ui.commun.base.BasePresenter
 import com.rogger.myapplication.ui.commun.base.BaseView
@@ -17,5 +18,6 @@ interface Login {
         fun displayPasswordFailure(@StringRes passwordError: Int?)
         fun onUserAuthenticated()
         fun onUserUnauthorized(message : String)
+
     }
 }

@@ -1,7 +1,7 @@
 document.querySelector(".cadastrar").addEventListener("click", function (event) {
     event.preventDefault();
     let isValid = true;
-    
+    let pais,moeda,segmeto;
     // Validar País
     const paisSelect = document.getElementById("pais");
     const paisError = document.getElementById("pais-error");
@@ -10,6 +10,7 @@ document.querySelector(".cadastrar").addEventListener("click", function (event) 
         paisSelect.classList.add("error-input");
         isValid = false;
     } else {
+       pais = paisSelect.value
         paisError.style.display = "none";
         paisSelect.classList.remove("error-input");
     }
@@ -22,6 +23,7 @@ document.querySelector(".cadastrar").addEventListener("click", function (event) 
         moedaSelect.classList.add("error-input");
         isValid = false;
     } else {
+        moeda = moedaSelect.value
         moedaError.style.display = "none";
         moedaSelect.classList.remove("error-input");
     }
@@ -34,31 +36,36 @@ document.querySelector(".cadastrar").addEventListener("click", function (event) 
         segmentoSelect.classList.add("error-input");
         isValid = false;
     } else {
+        segmeto =  segmentoSelect.value;
         segmentoError.style.display = "none";
         segmentoSelect.classList.remove("error-input");
     }
 
     // Só chama pergarClick se o formulário for válido E a caixa de seleção estiver marcada
     if (isValid && document.getElementById("termos").checked) {
-        pergarClick();
+        pergarClick(pais,moeda,segmeto,true);
     }
 });
 
-function pergarClick() {
+function pergarClick(pais, moeda, segmento, flag) {
     // Verifica se o objeto Android está disponível (no contexto WebView)
     if (typeof Android !== 'undefined' && Android.gotoWelcoScreen) {
-        Android.gotoWelcoScreen();
+        Android.gotoWelcoScreen(pais, moeda, segmento, flag);
     } else {
         console.error("Objeto Android ou função gotoWelcoScreen não encontrados. Você está executando em um WebView?");
         alert("Erro: Não foi possível prosseguir. O aplicativo não está em um ambiente Android.");
     }
-} 
-function goToTerms(){
-   Android.termsScreen();
 }
-document.getElementById("acesse-termos").addEventListener("click",function(){
-    goToTerms();
-});
+function goToTerms(){
+    if(typeof Android !== 'undefined' && Android.termsScreen){
+        Android.termsScreen();
+    } else {
+        alert("Erro: Não foi possível abrir os termos.");
+    }
+}
+
+document.getElementById("acesse-termos").addEventListener("click", goToTerms);
+
 document.getElementById("termos").addEventListener("change", function () {
     document.getElementById("cadastrar").disabled = !this.checked;
 });

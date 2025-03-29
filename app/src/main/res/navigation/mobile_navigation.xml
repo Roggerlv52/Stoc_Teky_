@@ -13,12 +13,12 @@
     <fragment
         android:id="@+id/nav_helper"
         android:name="com.rogger.myapplication.ui.helper.HelperFragment"
-        android:label="@string/menu_helper"
+        android:label="@string/menu_helper_alerta"
         tools:layout="@layout/fragment_helper" />
     <fragment
         android:id="@+id/nav_gestao"
-        android:name="com.rogger.myapplication.ui.gestao.FragmentGestao"
-        android:label="@string/menu_gestao"
+        android:name="com.rogger.myapplication.ui.gestao.view.FragmentGestao"
+        android:label="@string/menu_gestao_campos"
         tools:layout="@layout/fragment_gestao" />
     <fragment
         android:id="@+id/nav_setting"

@@ -1,6 +1,8 @@
 package com.rogger.myapplication.ui.register.view
 
-    interface FragmentAttachLiestener {
+import android.net.Uri
+
+interface FragmentAttachLiestener {
         fun goToNameAndPasswordScreen(email : String)
         fun goToLSettingScreen(name:String)
         fun goToWelcomeScreen(name:String)

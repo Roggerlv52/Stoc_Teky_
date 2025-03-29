@@ -44,25 +44,60 @@
     <string name="welcome_to_my_app"><b>Bem-Vindo!\n%1$s</b></string>
     <string name="next_av">Avançar</string>
     <string name="more">Outros\n</string>
-    <string name="menu_central">Gestão de Alertas</string>
+    <string name="menu_gestao_campos" translatable="false">Gestão de Campos</string>
     <string name="finish_screen">Encerrar Sessão</string>
-    <string name="menu_helper">Central de Apoio e Alertas</string>
+    <string name="menu_helper_alerta" translatable="false">Gestão de Alertas</string>
     <string name="print" translatable="false">Print</string>
     <string name="instock" translatable="false">Entrada no Estoque</string>
     <string name="stockup" translatable="false">Estoque Alto</string>
     <string name="stockdonw" translatable="false">Estoque Baixo</string>
 
     <string name="previwstock" translatable="false">Previsão de Fim de Estoque</string>
-    <string name="productexpiration">Produtos em Vencimento</string>
-    <string name="supplierpromotions">Promoções de Fornecedores</string>
-    <string name="stockoutput">Saída de Estoque</string>
-    <string name="donation">Sugestão de Doação de Estoque</string>
-    <string name="replacement">Sugestão de Reposição</string>
-    <string name="rental">Vencimento de Locação</string>
-    <string name="user_not_faund">Usuario não encontrado</string>
-    <string name="gestao">Gestão de Campos</string>
-    <string name="email_ja_cadastrado">E-mail já cadastrado</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="menu_gestao">Gestao de Contas</string>
-    <string name="password_error">Senha incorreta!</string>
+    <string name="productexpiration" translatable="false">Produtos em Vencimento</string>
+    <string name="supplierpromotions" translatable="false">Promoções de Fornecedores</string>
+    <string name="stockoutput" translatable="false">Saída de Estoque</string>
+    <string name="donation" translatable="false">Sugestão de Doação de Estoque</string>
+    <string name="replacement" translatable="false">Sugestão de Reposição</string>
+    <string name="rental" translatable="false">Vencimento de Locação</string>
+    <string name="user_not_faund" translatable="false">Usuario não encontrado</string>
+    <string name="gestao" translatable="false">Gestão de Campos</string>
+    <string name="email_ja_cadastrado" translatable="false">E-mail já cadastrado</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="menu_gestao" translatable="false">Gestao de Campos</string>
+    <string name="password_error" translatable="false">Senha incorreta!</string>
+    <string name="onegestao" translatable="false">Código de Barras</string>
+    <string name="twogestao" translatable="false">Dimensões</string>
+    <string name="threegestao" translatable="false">Peso</string>
+    <string name="fourgestao" translatable="false">Setor</string>
+    <string name="fivegestao" translatable="false">Validade</string>
+    <string name="sixgestao" translatable="false">Custo</string>
+    <string name="sevengestao" translatable="false">Armazém</string>
+    <string name="campos_a_exibir_financeiro" translatable="false">Campos a Exibir / Financeiro</string>
+    <string name="eightgestao" translatable="false">Produto</string>
+    <string name="ninegestao" translatable="false">Valor</string>
+    <string name="tengestao" translatable="false">Status</string>
+    <string name="elevengestao" translatable="false">CNPJ</string>
+    <string name="campos_a_exibir_fornecedor" translatable="false">Campos a Exibir / Fornecedor</string>
+    <string name="twelvegestao" translatable="false">E-mail</string>
+    <string name="thirteengestao" translatable="false">WhatsApp</string>
+    <string name="fourtenngestao" translatable="false">Telefone</string>
+    <string name="fifteenestao" translatable="false">Endereço</string>
+    <string name="campos_a_exibir_locacao" translatable="false">Campos a Exibir / Locação</string>
+    <string name="onerental" translatable="false">Data de Retirada</string>
+    <string name="tworental" translatable="false">Data de Devolução</string>
+    <string name="threerental" translatable="false">Quantidade</string>
+    <string name="fourrental" translatable="false">Código de Barras</string>
+    <string name="fiftrental" translatable="false">Dimensões</string>
+    <string name="sixrental" translatable="false">Peso</string>
+    <string name="sevenrental" translatable="false">Setor</string>
+    <string name="eightrental" translatable="false">Validade</string>
+    <string name="ninerental" translatable="false">Custo</string>
+    <string name="tenrental" translatable="false">Armazém</string>
+    <string name="campos_a_exibir_promocoes" translatable="false"> Campos a Exibir / Promoções</string>
+    <string name="sixteengestao" translatable="false">CNPJ</string>
+    <string name="seventenngestao" translatable="false">WhatsApp</string>
+    <string name="eighteengestao" translatable="false">Telefone</string>
+    <string name="nineteengestao" translatable="false">E-mail</string>
+    <string name="twentynestao" translatable="false">Endereço</string>
+    <string name="default_web_client_id">510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com</string>
 </resources>
