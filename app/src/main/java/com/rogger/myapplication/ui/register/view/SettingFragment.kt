@@ -17,7 +17,7 @@ import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.LayoutSettingBinding
 import com.rogger.myapplication.ui.commun.base.DependencyInjector
 import com.rogger.myapplication.ui.register.Settings
-import com.rogger.myapplication.ui.register.presentation.SettingPresenter
+import com.rogger.myapplication.ui.register.presentation.SettingRegisterPresenter
 import com.rogger.myapplication.ui.terms.TermsActivity
 
 class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
@@ -54,7 +54,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         }
 
         val repositer = DependencyInjector.registerEmailRepository()
-        presenter = SettingPresenter(this, repositer)
+        presenter = SettingRegisterPresenter(this, repositer)
 
         binding = LayoutSettingBinding.bind(view)
 

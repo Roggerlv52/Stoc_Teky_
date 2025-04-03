@@ -1,11 +1,9 @@
-package com.rogger.myapplication.ui.gestao.data
+package com.rogger.myapplication.ui.setting.data
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.rogger.myapplication.ui.setting.data.SettingCallback
-import com.rogger.myapplication.ui.setting.data.SettingDataSource
 
-class GestaoFireDataSource: SettingDataSource {
+class SettingFireDataSource: SettingDataSource {
     override fun deleteAccount(callback: SettingCallback) {
         val user = FirebaseAuth.getInstance().currentUser
         if (user == null) {

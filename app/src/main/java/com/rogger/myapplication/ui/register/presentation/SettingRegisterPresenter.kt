@@ -4,7 +4,7 @@ import com.rogger.myapplication.ui.register.Settings
 import com.rogger.myapplication.ui.register.data.RegisterCallback
 import com.rogger.myapplication.ui.register.data.RegisterRepository
 
-class SettingPresenter(
+class SettingRegisterPresenter(
     private var view: Settings.View?,
     private var repository: RegisterRepository
 ) : Settings.Presenter {

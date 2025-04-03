@@ -7,6 +7,8 @@ import com.rogger.myapplication.ui.login.data.LoginRepository
 import com.rogger.myapplication.ui.login.presentation.LoginPresenter
 import com.rogger.myapplication.ui.register.data.FireRegisterDataSource
 import com.rogger.myapplication.ui.register.data.RegisterRepository
+import com.rogger.myapplication.ui.setting.data.SettingFireDataSource
+import com.rogger.myapplication.ui.setting.data.SettingRepository
 import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 import com.rogger.myapplication.ui.splashScreen.data.SplashRepository
 
@@ -28,6 +30,10 @@ object DependencyInjector {
     fun registerEmailRepository() : RegisterRepository {
         return RegisterRepository(FireRegisterDataSource())
     }
+    fun settingRepository() : SettingRepository  {
+        return SettingRepository(SettingFireDataSource())
+    }
+
     /*
     fun searchRepository():SearchRepository{
         return SearchRepository(SearchFakeRemoteDataSource())

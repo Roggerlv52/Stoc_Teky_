@@ -17,14 +17,14 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/card_1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             style="@style/Theme.MyApplication.CardViewCustom"
             app:cardCornerRadius="12dp"
             app:contentPadding="12dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_ic"
@@ -145,7 +145,6 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_5" />
 
-
                 <TextView
                     android:id="@+id/txt_7"
                     android:layout_width="wrap_content"
@@ -157,6 +156,29 @@
                     app:layout_constraintBottom_toBottomOf="@+id/switchTemaEscuro"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_6" />
+
+                <TextView
+                    android:id="@+id/txt_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Excluir Dados"
+                    android:textColor="@color/red"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/txt_7"
+                    app:layout_constraintStart_toEndOf="@id/card_img_delete_2" />
+
+                <ImageView
+                    android:id="@+id/card_img_delete_2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_delete_outline_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switchTemaEscuro"
@@ -269,7 +291,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:text="Excluir Dados"
                     android:textColor="@color/red"
                     android:textSize="18dp"
@@ -286,6 +308,8 @@
                     android:src="@drawable/icdelete_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
