@@ -45,7 +45,7 @@
     <string name="next_av">Avançar</string>
     <string name="more">Outros\n</string>
     <string name="menu_gestao_campos" translatable="false">Gestão de Campos</string>
-    <string name="finish_screen">Encerrar Sessão</string>
+    <string name="finish_screen" translatable="false">Encerrar Sessão</string>
     <string name="menu_helper_alerta" translatable="false">Gestão de Alertas</string>
     <string name="print" translatable="false">Print</string>
     <string name="instock" translatable="false">Entrada no Estoque</string>
@@ -99,5 +99,14 @@
     <string name="eighteengestao" translatable="false">Telefone</string>
     <string name="nineteengestao" translatable="false">E-mail</string>
     <string name="twentynestao" translatable="false">Endereço</string>
+    <!--510334309711-el6csopijqpftqneqdb6esjk7q626o9a.apps.googleusercontent.com-->
+    <!--510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com-->
     <string name="default_web_client_id">510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com</string>
+    <string name="seu_e_mail" translatable="false"><b>Seu email</b></string>
+    <string name="message_reset_password" translatable="false"> Informe seu e-mail e receba um link para redefinir sua senha.</string>
+    <string name="txt_msg_reset_password" translatable="false">Esqueci minha senha</string>
+    <string name="send" translatable="false">Enviar</string>
+    <string name="error_in" translatable="false">Erro de servidor.</string>
+    <string name="email_not_found" translatable="false">E-mail não emcontrado.</string>
+    <string name="send_sussce" translatable="false">Email enviado com sucesso verifique sua caixa de entrada</string>
 </resources>

@@ -3,9 +3,14 @@ package com.rogger.myapplication.ui.splashScreen.view
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.rogger.myapplication.MainActivity
+import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.ActivitySplashBinding
 import com.rogger.myapplication.ui.commun.base.DependencyInjector
 import com.rogger.myapplication.ui.commun.extension.animationEnd
@@ -19,9 +24,23 @@ class SplashActivity : AppCompatActivity(), Splash.View {
     override  lateinit var presenter: Splash.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        // Define a Activity como full screen, removendo a status bar
+
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            @Suppress("DEPRECATION")
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
 
         val repository = DependencyInjector.splashRepository(this)
         presenter = SplashPresenter(this,repository)

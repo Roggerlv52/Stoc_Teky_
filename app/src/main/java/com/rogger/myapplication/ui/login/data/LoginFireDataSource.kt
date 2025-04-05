@@ -5,7 +5,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.rogger.myapplication.molds.UserAuth
 
-class LoginFireDataSource(private val auth: FirebaseAuth = FirebaseAuth.getInstance()) : LoginDataSource {
+class LoginFireDataSource(private val auth: FirebaseAuth = FirebaseAuth.getInstance()) :
+    LoginDataSource {
 
     override fun login(email: String, password: String, callback: LoginCallback) {
         auth.signInWithEmailAndPassword(email, password)
@@ -27,7 +28,7 @@ class LoginFireDataSource(private val auth: FirebaseAuth = FirebaseAuth.getInsta
                     val exception = task.exception
                     when (exception) {
                         is FirebaseAuthInvalidCredentialsException -> callback.onFailurePassword("Senha errada")
-                         is FirebaseAuthInvalidUserException -> callback.onFailure("Usuário não encontrado")
+                        is FirebaseAuthInvalidUserException -> callback.onFailure("Usuário não encontrado")
                         else -> callback.onFailure("Usuário não encontrado ou senha incorreta")
                     }
                 }
@@ -36,5 +37,6 @@ class LoginFireDataSource(private val auth: FirebaseAuth = FirebaseAuth.getInsta
             .addOnFailureListener { exception ->
                 callback.onFailure("Erro de conexão: ${exception.message}")
             }
+
     }
 }

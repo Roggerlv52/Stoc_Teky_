@@ -8,8 +8,8 @@ class RegisterRepository(private val dataSource : RegisterDataSource) {
         dataSource.createNameAndPassword(email, name, password, callback)
     }
 
-    fun createSetting( name: String, pais: String, moeda: String, comercio: String, termos: Boolean, callback: RegisterCallback) {
-        dataSource.createSetting( name, pais, moeda, comercio, termos, callback)
+    fun createSetting( name: String,email: String?, pais: String, moeda: String, comercio: String, termos: Boolean, callback: RegisterCallback) {
+        dataSource.createSetting( name,email, pais, moeda, comercio, termos, callback)
     }
     fun deleteAccount(callback: RegisterCallback) {
         dataSource.deleteAccount(callback)

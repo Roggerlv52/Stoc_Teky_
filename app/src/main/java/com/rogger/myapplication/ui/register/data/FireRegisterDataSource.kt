@@ -72,6 +72,7 @@ class FireRegisterDataSource : RegisterDataSource {
 
     override fun createSetting(
         name: String,
+        email: String?,
         pais: String,
         moeda: String,
         comercio: String,
@@ -86,6 +87,7 @@ class FireRegisterDataSource : RegisterDataSource {
         }
         val settingsData = hashMapOf(
             "name" to name,
+            "email" to email,
             "pais" to pais,
             "moeda" to moeda,
             "comercio" to comercio,
@@ -93,7 +95,7 @@ class FireRegisterDataSource : RegisterDataSource {
         )
         FirebaseFirestore.getInstance().collection("/users")
             .document(user.uid)
-            .set(settingsData as Map<String, Any>)
+            .set(settingsData as Map<*, *>)
             .addOnSuccessListener { callback.onSuccess() }
             .addOnFailureListener { callback.onFailure(it.message ?: "Erro interno ao atualizar configurações") }
             .addOnCompleteListener { callback.onComplete() }

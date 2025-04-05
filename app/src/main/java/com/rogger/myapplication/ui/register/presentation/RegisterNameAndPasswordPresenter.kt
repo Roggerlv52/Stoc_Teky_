@@ -42,7 +42,7 @@ class RegisterNameAndPasswordPresenter(
 
             repository.createNameAndPassword(email, name, password, object : RegisterCallback {
                 override fun onSuccess() {
-                    view?.onCreateSuccess(name)
+                    view?.onCreateSuccess(name,email)
                 }
 
                 override fun onFailure(message: String) {

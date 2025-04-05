@@ -11,13 +11,14 @@ class SettingRegisterPresenter(
 
     override fun createData(
         name: String,
+        email: String?,
         pais: String,
         moeda: String,
         comercio: String,
         termos: Boolean
     ) {
 
-        repository.createSetting(name, pais, moeda, comercio, termos, object : RegisterCallback {
+        repository.createSetting(name, email, pais, moeda, comercio, termos, object : RegisterCallback {
 
             override fun onSuccess() {
                 view?.onsSuccess(name)
@@ -33,6 +34,7 @@ class SettingRegisterPresenter(
 
         })
     }
+
 
     override fun onDestroy() {
         view = null

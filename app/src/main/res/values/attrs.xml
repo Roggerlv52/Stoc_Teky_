@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="LoadingButton">
-        <attr name="text" format="string"/>
+        <attr name="text" format="string" />
     </declare-styleable>
+    <attr name="colorTextLogin" format="color" />
+    <attr name="colorTextHint" format="color" />
+    <attr name="icIconColor" format="color" />
+    <attr name="colorToolbar" format="color" />
+    <attr name="colorScreen" format="color" />
+
+
 </resources>

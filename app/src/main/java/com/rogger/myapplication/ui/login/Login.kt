@@ -8,6 +8,7 @@ interface Login {
     //camada de presenter
     interface Presenter : BasePresenter {
         fun login(email : String, password : String)
+        fun recoverPassword(email: String)
     }
 
     // camada de view
@@ -17,6 +18,5 @@ interface Login {
         fun displayPasswordFailure(@StringRes passwordError: Int?)
         fun onUserAuthenticated()
         fun onUserUnauthorized(message : String)
-
     }
 }

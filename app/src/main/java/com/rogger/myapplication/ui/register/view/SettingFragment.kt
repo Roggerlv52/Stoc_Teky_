@@ -23,18 +23,20 @@ import com.rogger.myapplication.ui.terms.TermsActivity
 class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
     companion object {
         const val KEY_NAMESETTING = "key_name_setting"
+        const val KEY_EMAIL = "key_email"
     }
     private var name: String? = null
     private var emailg: String? = null
+    private var email: String? = null
     private var binding: LayoutSettingBinding? = null
-    private var fragmentAttachLiestener: FragmentAttachLiestener? = null
+    private var fragmentAttachListener: FragmentAttachLiestener? = null
 
     override lateinit var presenter: Settings.Presenter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is FragmentAttachLiestener) {
-            fragmentAttachLiestener = context
+            fragmentAttachListener = context
         } else {
             throw RuntimeException("$context deve implementar FragamentAttachLiestener")
         }
@@ -48,11 +50,11 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
 
         name = arguments?.getString(KEY_NAMESETTING)
             ?: throw IllegalArgumentException("nome not found")
+        email = arguments?.getString(KEY_EMAIL)
         if (name == null) {
             name = arguments?.getString("EXTRA_NAME")
-            emailg = arguments?.getString("EXTRA_EMAIL")
+           // emailg = arguments?.getString("EXTRA_EMAIL")
         }
-
         val repositer = DependencyInjector.registerEmailRepository()
         presenter = SettingRegisterPresenter(this, repositer)
 
@@ -66,8 +68,6 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
 
                 webView.webViewClient = object : WebViewClient() {
                     // Impede que o WebView carregue URLs arbitrárias
-
-
                     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                         return false // Deixa o WebView lidar com a URL
                     }
@@ -87,7 +87,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
                     }
                 } // Importante: Defina um WebViewClient
                 webView.addJavascriptInterface(
-                    WebAppInterface(fragmentAttachLiestener!!, webView),
+                    WebAppInterface(fragmentAttachListener!!, webView),
                     "Android"
                 ) // Adicione a interface JavaScript
                 webView.loadUrl("file:///android_asset/index.html")
@@ -106,7 +106,7 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
     }
     // JavaScript Interface
     inner class WebAppInterface(
-        private val fragmentAttachLiestener: FragmentAttachLiestener,
+        private val fragmentAttachListener: FragmentAttachLiestener,
         private val webView: WebView
     ) {
 
@@ -128,10 +128,9 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         @JavascriptInterface
         fun gotoWelcoScreen(pais: String, moeda: String, segmento: String, termos: Boolean) {
             activity?.runOnUiThread {
-                presenter.createData(name!!, pais, moeda, segmento, termos)
-                fragmentAttachLiestener.goToWelcomeScreen(name!!)
+                presenter.createData(name!!,email, pais, moeda, segmento, termos)
+                fragmentAttachListener.goToWelcomeScreen(name!!)
 
-              // Toast.makeText(requireContext(), "Dados salvos com sucesso!", Toast.LENGTH_SHORT).show()
             }
         }
 

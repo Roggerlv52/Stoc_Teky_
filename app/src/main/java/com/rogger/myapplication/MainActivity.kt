@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(toolbar)
-        // Define um ícone personalizado
 
+        // Define um ícone personalizado
         val navView = findViewById<NavigationView>(R.id.nav_view)
         navController = findNavController(R.id.nav_host_fragment_content_main)
         SharedPrefManager.init(this)

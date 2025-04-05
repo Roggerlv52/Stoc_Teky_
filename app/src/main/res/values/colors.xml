@@ -10,11 +10,12 @@
     <color name="gray_dark">#3C3C3C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#005F99</color>
-    <color name="gray_border">#414040</color>
+    <color name="gray_border">#797d7f</color>
     <color name="red">#E01000</color>
     <color name="orange">#FF9800</color>
     <color name="orange_enabled">#FF5722</color>
     <color name="green">#008005</color>
     <color name="light_green">#12BF1A</color>
     <color name="yellow">#F0F0F0</color>
+    <color name="light_icon_color">#FFFFFF</color>
 </resources>

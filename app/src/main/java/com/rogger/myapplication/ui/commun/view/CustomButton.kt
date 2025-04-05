@@ -1,17 +1,15 @@
 package com.rogger.myapplication.ui.commun.view
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
 import com.rogger.myapplication.R
 
-class LoadingButton : FrameLayout {
+class CustomButton : FrameLayout {
     private lateinit var button: Button
     private lateinit var progress: ProgressBar
     private var defaultText: String? = null
@@ -45,7 +43,7 @@ class LoadingButton : FrameLayout {
         button.isAllCaps=false
 
         // Definir o estado inicial
-        showProgress(false)
+       // showProgress(false)
     }
 
     override fun setEnabled(enabled: Boolean) {
@@ -55,14 +53,14 @@ class LoadingButton : FrameLayout {
             button.alpha = 0.5f // Dica visual para o estado desativado
             //button.setBackgroundResource(R.drawable.button_backgraund_disabled)
         } else {
-            button.alpha = 1.0f
-           // button.setBackgroundResource(R.drawable.button_backgraund_enabled)
+           // button.alpha = 1.0f
+            button.setBackgroundResource(R.drawable.button_enabled)
         }
     }
     override fun setOnClickListener(l: OnClickListener?) {
         button.setOnClickListener(l)
     }
-
+/*
     fun showProgress(enabled: Boolean) {
         if (enabled) {
             button.text = ""
@@ -78,5 +76,7 @@ class LoadingButton : FrameLayout {
             //button.setBackgroundResource(R.drawable.button_backgraund_enabled)
         }
     }
+
+ */
 
 }

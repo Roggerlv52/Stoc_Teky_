@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/layout_reset_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="45dp"
+                android:textColor="?attr/icIconColor"
+                android:text="@string/txt_msg_reset_password"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="?attr/icIconColor"
+                android:layout_marginStart="18dp"
+                android:text="@string/message_reset_password" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="?attr/icIconColor"
+                    android:text="@string/seu_e_mail" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reset_email_input"
+                    style="@style/Theme.MyApplication.FormEditTextInput"
+                    app:hintEnabled="false">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reset_edit_email"
+                        style="@style/Theme.MyApplication.FormEdit_Text"
+                        android:autofillHints="@null"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/send_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="28dp"
+                    android:padding="10dp"
+                    android:backgroundTint="@color/button_background"
+                    android:textAllCaps="false"
+                    android:enabled="false"
+                    android:text="@string/send"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progress_send"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

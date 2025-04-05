@@ -129,7 +129,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onCreateSuccess(name: String) {
+    override fun onCreateSuccess(name: String,email: String) {
         _binding?.progressbarEmailAndPassword?.visibility = View.GONE
         fragamentAttachListener?.goToLSettingScreen(name)
 

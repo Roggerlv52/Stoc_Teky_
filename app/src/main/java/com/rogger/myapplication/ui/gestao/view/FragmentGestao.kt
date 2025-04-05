@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.FragmentGestaoBinding
+import com.rogger.myapplication.ui.commun.base.DependencyInjector
 import com.rogger.myapplication.ui.gestao.Gestao
+import com.rogger.myapplication.ui.gestao.presentation.GestaoPresenter
 import com.rogger.myapplication.ui.login.view.LoginActivity
 
 
@@ -20,6 +22,9 @@ class FragmentGestao : Fragment(R.layout.fragment_gestao), Gestao.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentGestaoBinding.bind(view)
+
+        var repository = DependencyInjector.gestaoRepository()
+        presenter = GestaoPresenter(this, repository)
     }
         private fun showConfirmationDialog() {
             AlertDialog.Builder(requireContext())

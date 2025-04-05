@@ -12,7 +12,20 @@
           "package_name": "com.rogger.myapplication"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "510334309711-el6csopijqpftqneqdb6esjk7q626o9a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rogger.myapplication",
+            "certificate_hash": "ef0abbda6e4904ed0991fe000025e21381ca275c"
+          }
+        },
+        {
+          "client_id": "510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBed9-A01hAklHNKfODNKDXX0b0n2o-29s"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

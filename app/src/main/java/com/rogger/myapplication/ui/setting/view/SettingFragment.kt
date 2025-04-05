@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.FragmentSettingBinding
@@ -28,7 +29,15 @@ class SettingFragment : Fragment(R.layout.fragment_setting), Setting.View {
         binding?.txt8?.setOnClickListener {
             showConfirmationDialog()
         }
-
+        binding?.switchThemeDark?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Ativa o modo escuro
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                // Ativa o modo claro
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
     }
 

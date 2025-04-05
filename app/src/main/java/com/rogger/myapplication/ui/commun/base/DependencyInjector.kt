@@ -1,6 +1,8 @@
 package com.rogger.myapplication.ui.commun.base
 
 import android.content.Context
+import com.rogger.myapplication.ui.gestao.data.GestaoFireDataSource
+import com.rogger.myapplication.ui.gestao.data.GestaoRepository
 import com.rogger.myapplication.ui.login.Login
 import com.rogger.myapplication.ui.login.data.LoginFireDataSource
 import com.rogger.myapplication.ui.login.data.LoginRepository
@@ -23,7 +25,7 @@ object DependencyInjector {
     }
     fun loginPresenter(view: Login.View?, context: Context): Login.Presenter { // Adiciona o método loginPresenter
         val splashLocalDataSource = SplashLocalDataSource(context)
-        return LoginPresenter(view, loginRepository(), splashLocalDataSource)
+        return LoginPresenter(view, loginRepository()/*, splashLocalDataSource*/)
     }
 
 
@@ -32,6 +34,10 @@ object DependencyInjector {
     }
     fun settingRepository() : SettingRepository  {
         return SettingRepository(SettingFireDataSource())
+    }
+
+    fun gestaoRepository(): GestaoRepository {
+     return GestaoRepository(GestaoFireDataSource())
     }
 
     /*

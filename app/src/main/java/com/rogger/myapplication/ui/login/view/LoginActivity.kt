@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.rogger.myapplication.MainActivity
 import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.ActivityLoginBinding
-import com.rogger.myapplication.ui.commun.BaseActivit
+import com.rogger.myapplication.ui.commun.BaseActivity
 import com.rogger.myapplication.ui.commun.base.DependencyInjector
 import com.rogger.myapplication.ui.commun.util.SharedPrefManager
 import com.rogger.myapplication.ui.commun.util.TxtWatcher
@@ -27,7 +27,7 @@ import com.rogger.myapplication.ui.login.Login
 import com.rogger.myapplication.ui.register.view.RegisterActivity
 import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 
-class LoginActivity : BaseActivit(), Login.View {
+class LoginActivity : BaseActivity(), Login.View {
 
     private val RC_ONE_TAP = 2
     private var binding: ActivityLoginBinding? = null
@@ -38,19 +38,6 @@ class LoginActivity : BaseActivit(), Login.View {
 
     override lateinit var presenter: Login.Presenter
 
-    private val oneTapRequest: BeginSignInRequest by lazy {
-        BeginSignInRequest.builder()
-            .setGoogleIdTokenRequestOptions(
-                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                    .setSupported(true)
-                    .setServerClientId(getString(R.string.default_web_client_id))
-                    .setFilterByAuthorizedAccounts(false)
-                    .build()
-            )
-            .build()
-    }
-
-    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -80,6 +67,9 @@ class LoginActivity : BaseActivit(), Login.View {
                 loginTxtRegister.setOnClickListener {
                     goToRegisterScreen()
                 }
+                txtForgotPassword.setOnClickListener {
+                    gotoResetActivity()
+                }
                 // Alternar visibilidade da senha e trocar ícones
                 loginEditPasswordInput.setEndIconOnClickListener {
                     val isPasswordVisible =
@@ -104,7 +94,7 @@ class LoginActivity : BaseActivit(), Login.View {
         }
     }
 
-    fun startOneTapSignIn() {
+    private fun startOneTapSignIn() {
         oneTapClient = Identity.getSignInClient(this)
         oneTapClient.beginSignIn(oneTapRequest)
             .addOnSuccessListener { result ->
@@ -115,7 +105,8 @@ class LoginActivity : BaseActivit(), Login.View {
                         null,
                         0,
                         0,
-                        0
+                        0,
+
                     )
                 } catch (e: IntentSender.SendIntentException) {
                     Log.e("LoginActivity", "Erro ao iniciar One Tap: ${e.localizedMessage}")
@@ -124,6 +115,18 @@ class LoginActivity : BaseActivit(), Login.View {
             .addOnFailureListener { e ->
                 Log.e("LoginActivity", "Falha ao iniciar One Tap: ${e.localizedMessage}")
             }
+    }
+    private val oneTapRequest: BeginSignInRequest by lazy {
+        BeginSignInRequest.builder()
+            .setGoogleIdTokenRequestOptions(
+                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                    .setSupported(true)
+                    .setServerClientId(getString(R.string.default_web_client_id))
+                    .setFilterByAuthorizedAccounts(false)
+                    .build()
+            )
+            .setAutoSelectEnabled(true)
+            .build()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -141,8 +144,8 @@ class LoginActivity : BaseActivit(), Login.View {
                                 uri = user?.photoUrl
                                 SharedPrefManager.saveString("IMAGE_URL", uri?.toString().orEmpty())
                                 name = user?.displayName
-                                email = user?.email
-
+                                email = authTask.result.user?.email
+                                Toast.makeText(this, "$name e $email", Toast.LENGTH_SHORT).show()
                                 // Verifica se o documento do usuário existe no Firestore
                                 FirebaseFirestore.getInstance().collection("/users")
                                     .document(user!!.uid)
@@ -157,20 +160,35 @@ class LoginActivity : BaseActivit(), Login.View {
                                         }
                                     }
                                     .addOnFailureListener { exception ->
-                                        Log.e("LoginActivity", "Erro ao verificar documento: ${exception.message}")
+                                        Log.e(
+                                            "LoginActivity",
+                                            "Erro ao verificar documento: ${exception.message}"
+                                        )
                                         // Se ocorrer erro, podemos optar por direcionar o usuário para completar o cadastro
                                         goToRegisterScreen()
                                     }
                             } else {
-                                Log.e("LoginActivity", "Falha no login Firebase", authTask.exception)
+                                Log.e(
+                                    "LoginActivity",
+                                    "Falha no login Firebase",
+                                    authTask.exception
+                                )
                             }
                         }
                 } else {
                     Toast.makeText(this, "Token de ID não encontrado!", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(this, "Erro ao recuperar credencial do One Tap: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
-                Log.e("LoginActivity", "Erro ao recuperar credencial do One Tap: ${e.localizedMessage}", e)
+                Toast.makeText(
+                    this,
+                    "Erro ao recuperar credencial do One Tap: ${e.localizedMessage}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.e(
+                    "LoginActivity",
+                    "Erro ao recuperar credencial do One Tap: ${e.localizedMessage}",
+                    e
+                )
             }
         }
     }
@@ -181,20 +199,27 @@ class LoginActivity : BaseActivit(), Login.View {
         binding?.loginBtnEnter?.isEnabled = isEmailFilled && isPasswordFilled
     }
 
+    private fun gotoResetActivity() {
+        val intent = Intent(this, ResetPasswordActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun goToRegisterScreen() {
-        SplashLocalDataSource(this).setLoggedIn(true)
+        //SplashLocalDataSource(this).setLoggedIn(true)
+       // Toast.makeText(this, "$name e $email", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, RegisterActivity::class.java).apply {
             putExtra("EXTRA_NAME", name)
             putExtra("EXTRA_EMAIL", email)
         }
-        startActivity(intent)
+       // startActivity(intent)
+
     }
 
     override fun onUserAuthenticated() {
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         }
-        startActivity(intent)
+       // startActivity(intent)
     }
 
     override fun onUserUnauthorized(message: String) {
