@@ -14,7 +14,7 @@ class GestaoFireDataSource: SettingDataSource {
             return
         }
 
-        // Primeiro, deleta os dados do usuário no Firestore
+        // Primeiro, deleta os dados do usuário no Firestore 
         FirebaseFirestore.getInstance().collection("/users")
             .document(user.uid)
             .delete()
