@@ -40,6 +40,53 @@
         android:name="com.rogger.myapplication.ui.register.view.RegisterWelcomeFragment"
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_register_welcome" />
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.rogger.myapplication.ui.splashScreen.view.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
+
+    <!--   Fragmentos da home  -->
+    <fragment
+        android:id="@+id/nav_estoque"
+        android:name="com.rogger.myapplication.ui.home.module.StockFragment"
+        android:label="Estoque"
+        tools:layout="@layout/fragment_stock" />
+    <fragment
+        android:id="@+id/nav_fornecedores"
+        android:name="com.rogger.myapplication.ui.home.module.SupplierFragment"
+        android:label="Fornecedores"
+        tools:layout="@layout/fragment_supplier" />
+    <fragment
+        android:id="@+id/nav_notas"
+        android:name="com.rogger.myapplication.ui.home.module.InvoicesFragment"
+        android:label="Notas Fiscais"
+        tools:layout="@layout/fragment_invoices" />
+    <fragment
+        android:id="@+id/nav_relatorios"
+        android:name="com.rogger.myapplication.ui.home.module.ReportFragment"
+        android:label="Relatórios"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/nav_financeiro"
+        android:name="com.rogger.myapplication.ui.home.module.FinancialFragment"
+        android:label="Financeiro"
+        tools:layout="@layout/fragment_financial" />
+    <fragment
+        android:id="@+id/nav_locacao"
+        android:name="com.rogger.myapplication.ui.home.module.LocationFragment"
+        android:label="Locação"
+        tools:layout="@layout/fragment_location" />
+    <fragment
+        android:id="@+id/nav_promocoes"
+        android:name="com.rogger.myapplication.ui.home.module.PromotionFragment"
+        android:label="Promoções e ONG's"
+        tools:layout="@layout/fragment_promotion" />
+    <fragment
+        android:id="@+id/nav_outomacao"
+        android:name="com.rogger.myapplication.ui.home.module.OutmationFragment"
+        android:label="Automação"
+        tools:layout="@layout/fragment_outmation" />
 
 
 </navigation>

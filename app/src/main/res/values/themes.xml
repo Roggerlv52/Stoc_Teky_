@@ -17,6 +17,12 @@
         <item name="icIconColor">@color/gray_dark</item>
         <item name="colorToolbar">@color/orange</item>
         <item name="colorScreen">@color/white</item>
+        <item name="colorButtonBackground">@color/orange</item>
+        <item name="colorDrawerBackground">@color/white</item>
+        <!-- Define as cores do gradiente do menu lateral -->
+        <item name="center_color">#FF9800</item>
+        <item name="start_color">#FF9800</item>
+        <item name="end_color">#E7BE81</item>
     </style>
 
     <style name="Theme.MyApplication.NoActionBar">
@@ -26,8 +32,6 @@
 
     <style name="Theme.MyApplication.AppBarOverlay" parent="Theme.AppCompat.DayNight">
         <item name="android:backgroundTint">@color/orange</item>
-
     </style>
-
     <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

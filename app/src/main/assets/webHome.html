@@ -15,32 +15,46 @@
 
 <div class="container">
     <div class="menu">
-        <button class="menu-item"><span class="material-symbols-outlined">package_2</span> Estoque
+        <button class="menu-item" onclick="Android.openScreen('estoque')">
+            <span class="material-symbols-outlined">package_2</span> Estoque
         </button>
-        <button class="menu-item"><span class="material-symbols-outlined">local_shipping</span>
+        <button class="menu-item" onclick="Android.openScreen('fornecedores')">
+            <span class="material-symbols-outlined">local_shipping</span>
             Fornecedores
         </button>
-        <button class="menu-item"><span class="material-symbols-outlined">receipt_long</span> Notas
+        <button class="menu-item" onclick="Android.openScreen('fiscais')">
+            <span class="material-symbols-outlined">receipt_long</span> Notas
             Fiscais
         </button>
-        <button class="menu-item"><span class="material-symbols-outlined">bar_chart</span>
+        <button class="menu-item" onclick="Android.openScreen('relatórios')">
+            <span class="material-symbols-outlined">bar_chart</span>
             Relatórios
         </button>
-        <button class="menu-item"><span class="material-symbols-outlined">attach_money</span>
+        <button class="menu-item" onclick="Android.openScreen('financeiro')">
+            <span class="material-symbols-outlined">attach_money</span>
             Financeiro
         </button>
 
-        <button class="menu-item"><span class="material-symbols-outlined">pallet</span> Locação
-        </button>
-        </button>
-        <button class="menu-item"><span class="material-symbols-outlined">redeem</span> Promoções &
+        <button class="menu-item" onclick="Android.openScreen('locação')">
+            <span class="material-symbols-outlined">pallet</span>
+             Locação</button>
+        <button class="menu-item" onclick="Android.openScreen('promoções')">
+            <span class="material-symbols-outlined">redeem</span>
+             Promoções &
             ONG's
         </button>
-        <button class="menu-item"><span class="material-symbols-outlined">smart_toy</span> Automação
-        </button>
-
-        </button>
+        <button class="menu-item" onclick="Android.openScreen('automação')">
+            <span class="material-symbols-outlined">smart_toy</span> Automação</button>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (prefersDarkScheme.matches) {
+        document.body.classList.add('dark-mode');
+    }
+});
+    </script>
 </div>
 
 </body>

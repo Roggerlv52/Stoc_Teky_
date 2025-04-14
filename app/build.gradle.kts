@@ -52,7 +52,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.support.annotations)
-
+    implementation(libs.circleimageview)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.auth)
     implementation(libs.play.services.auth)
@@ -64,6 +64,8 @@ dependencies {
 
     implementation(libs.googleid)
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

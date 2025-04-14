@@ -63,6 +63,13 @@ function goToTerms(){
         alert("Erro: Não foi possível abrir os termos.");
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (prefersDarkScheme.matches) {
+        document.body.classList.add('dark-mode');
+    }
+});
 
 document.getElementById("acesse-termos").addEventListener("click", goToTerms);
 

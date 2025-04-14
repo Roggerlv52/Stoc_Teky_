@@ -1,0 +1,27 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    background-color: #1e1e1e;
+}
+
+/* Ajustes para inputs, selects, botões e demais elementos */
+select{
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+button{
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Ajuste das mensagens de erro */
+.error-message {
+    color: #ff8080;
+}

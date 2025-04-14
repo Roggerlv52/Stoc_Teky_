@@ -36,7 +36,7 @@ fun AppCompatActivity.replaceFragment(@IdRes id : Int, fragment : Fragment){
     if (supportFragmentManager.findFragmentById(id) == null) {
         supportFragmentManager.beginTransaction().apply {
             add(id, fragment,fragment.javaClass.simpleName)
-            //addToBackStack(null)
+            addToBackStack(null)
             commit()//para ativar as modificações
         }
     } else {

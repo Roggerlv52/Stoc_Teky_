@@ -27,7 +27,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
-        android:backgroundTint="#F1F1F1">
+        android:background="?attr/colorDrawerBackground">
 
         <Button
             android:id="@+id/drawer_btn_finish"
@@ -36,15 +36,13 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="?attr/colorButtonBackground"
             android:padding="10dp"
             android:textAlignment="center"
             android:drawableLeft="@drawable/exit_24"
             android:textAllCaps="false"
             android:text="@string/finish_screen"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorTextHint"
             tools:ignore="RtlCompat" />
     </com.google.android.material.navigation.NavigationView>
-
-
 </androidx.drawerlayout.widget.DrawerLayout>

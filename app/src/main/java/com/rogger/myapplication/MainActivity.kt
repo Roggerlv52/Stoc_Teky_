@@ -31,6 +31,7 @@ import com.rogger.myapplication.ui.avalie.AvalieActivity
 import com.rogger.myapplication.ui.commun.util.SharedPrefManager
 import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 import com.rogger.myapplication.ui.terms.TermsActivity
+import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                         val name = document.getString("name")
                         val email = document.getString("email")
                         val headerView = navView.getHeaderView(0)
-                        val imageViewHeader: ImageView =
+                        val imageViewHeader: CircleImageView =
                             headerView.findViewById(R.id.imageView_header)
                         val textViewHeader: TextView = headerView.findViewById(R.id.txt_name_reader)
                         val textViewEmail: TextView = headerView.findViewById(R.id.txt_email_reader)
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity() {
             splashLocalDataSource.clearSession()
             SharedPrefManager.clearPreferences()
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_home, R.id.nav_helper, R.id.nav_setting, R.id.nav_gestao),

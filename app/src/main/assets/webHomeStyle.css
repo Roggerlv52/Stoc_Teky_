@@ -80,3 +80,35 @@ h1 {
 .menu-item.active {
   background: #ddd;
 }
+/* Modo Escuro */
+@media (prefers-color-scheme: dark) {
+
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  
+  .container {
+    background: #1e1e1e;
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.1);
+  }
+  
+  h1 {
+    /* Pode ajustar para manter o contraste ou optar por um tom mais claro */
+    color: #ffa726;
+  }
+  
+  .menu-item {
+    background: #2c2c2c;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+  }
+  
+  .menu-item.active {
+    background: #3a3a3a;
+  }
+  
+  .menu-item i {
+    color: #ccc;
+  }
+}
