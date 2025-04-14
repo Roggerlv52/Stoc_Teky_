@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity(), Splash.View {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        // Define a Activity como full screen, removendo a status bar
+
 
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -66,7 +66,7 @@ class SplashActivity : AppCompatActivity(), Splash.View {
                 //para tirar ativvidade da frente
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
-                //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             })
             duration = 2000
             startDelay = 500
@@ -93,6 +93,4 @@ class SplashActivity : AppCompatActivity(), Splash.View {
             start()
         }
     }
-
-
 }

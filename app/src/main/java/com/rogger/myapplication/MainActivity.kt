@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         splashLocalDataSource = SplashLocalDataSource(this)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
 
+        splashLocalDataSource.setLoggedIn(true)
+
         toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(toolbar)
 
@@ -70,8 +72,6 @@ class MainActivity : AppCompatActivity() {
                     if (document != null && document.exists()) {
                         val name = document.getString("name")
                         val email = document.getString("email")
-
-                        // Agora atualiza a UI
                         val headerView = navView.getHeaderView(0)
                         val imageViewHeader: ImageView =
                             headerView.findViewById(R.id.imageView_header)

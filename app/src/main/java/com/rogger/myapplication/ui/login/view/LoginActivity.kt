@@ -1,6 +1,5 @@
 package com.rogger.myapplication.ui.login.view
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentSender
 import android.net.Uri
@@ -12,7 +11,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.auth.api.identity.SignInCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,7 +23,8 @@ import com.rogger.myapplication.ui.commun.util.SharedPrefManager
 import com.rogger.myapplication.ui.commun.util.TxtWatcher
 import com.rogger.myapplication.ui.login.Login
 import com.rogger.myapplication.ui.register.view.RegisterActivity
-import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
+import org.json.JSONObject
+import android.util.Base64
 
 class LoginActivity : BaseActivity(), Login.View {
 
@@ -133,9 +132,10 @@ class LoginActivity : BaseActivity(), Login.View {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_ONE_TAP) {
             try {
-                val credential: SignInCredential = oneTapClient.getSignInCredentialFromIntent(data)
+                val credential = oneTapClient.getSignInCredentialFromIntent(data)
                 val idToken = credential.googleIdToken
                 if (idToken != null) {
+                    email = decodeIdTokenAndExtractEmail(idToken)
                     val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(firebaseCredential)
                         .addOnCompleteListener { authTask ->
@@ -144,8 +144,6 @@ class LoginActivity : BaseActivity(), Login.View {
                                 uri = user?.photoUrl
                                 SharedPrefManager.saveString("IMAGE_URL", uri?.toString().orEmpty())
                                 name = user?.displayName
-                                email = authTask.result.user?.email
-                                Toast.makeText(this, "$name e $email", Toast.LENGTH_SHORT).show()
                                 // Verifica se o documento do usuário existe no Firestore
                                 FirebaseFirestore.getInstance().collection("/users")
                                     .document(user!!.uid)
@@ -192,6 +190,21 @@ class LoginActivity : BaseActivity(), Login.View {
             }
         }
     }
+    private fun decodeIdTokenAndExtractEmail(idToken: String): String? {
+        return try {
+            val parts = idToken.split(".")
+            if (parts.size < 2) return null
+
+            val payload = parts[1]
+            val decodedBytes = Base64.decode(payload, Base64.URL_SAFE)
+            val jsonPayload = String(decodedBytes, Charsets.UTF_8)
+            val jsonObject = JSONObject(jsonPayload)
+            jsonObject.optString("email", null)
+        } catch (e: Exception) {
+            Log.e("OneTap", "Erro ao decodificar o ID Token: ${e.localizedMessage}")
+            null
+        }
+    }
 
     private val watcher = TxtWatcher {
         val isEmailFilled = binding?.loginEditEmail?.text.toString().isNotEmpty()
@@ -201,17 +214,17 @@ class LoginActivity : BaseActivity(), Login.View {
 
     private fun gotoResetActivity() {
         val intent = Intent(this, ResetPasswordActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
 
     private fun goToRegisterScreen() {
-        //SplashLocalDataSource(this).setLoggedIn(true)
-       // Toast.makeText(this, "$name e $email", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, RegisterActivity::class.java).apply {
-            putExtra("EXTRA_NAME", name)
-            putExtra("EXTRA_EMAIL", email)
+            intent.flags.or(Intent.FLAG_ACTIVITY_CLEAR_TASK)//Para tirar ativvidade da frente
+            putExtra("EXTRA_NAME_LOGIN", name)
+            putExtra("EXTRA_EMAIL_LOGIN", email)
         }
-       // startActivity(intent)
+       startActivity(intent)
 
     }
 
@@ -219,7 +232,7 @@ class LoginActivity : BaseActivity(), Login.View {
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         }
-       // startActivity(intent)
+        startActivity(intent)
     }
 
     override fun onUserUnauthorized(message: String) {

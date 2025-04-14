@@ -10,7 +10,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Stoc Teky</string>
-    <string name="nav_header_subtitle"></string>
+    <string name="nav_header_subtitle" />
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -35,15 +35,16 @@
     <string name="continui">Continuar\n</string>
     <string name="menu_login">login\n</string>
     <string name="email_cadaster">Digite seu endereço de e-mail.</string>
-    <string name="vamos_comesar">Vamos começar! 1/3</string>
+    <string name="vamos_comesar">Vamos começar! ⅓</string>
     <string name="quase_la">Quase lá! 2/3</string>
     <string name="created_passworde_acess">Agora, informe seu nome completo e crie sua senha.</string>
 
     <string name="agree_terms_policy">Ao clicar em Entrar, você concorda com nossos
 <b>Termos de Uso e Privacidade.</b></string>
-    <string name="welcome_to_my_app"><b>Bem-Vindo!\n%1$s</b></string>
+    <string name="welcome_to_my_app"><b>Bem-Vindo! %1$s</b></string>
     <string name="next_av">Avançar</string>
     <string name="more">Outros\n</string>
     <string name="finish_screen">Encerrar Sessão</string>
     <string name="menu_helper_alerta">Gestão de Alertas</string>
+    <string name="password_error">Senha incorreta</string>
 </resources>

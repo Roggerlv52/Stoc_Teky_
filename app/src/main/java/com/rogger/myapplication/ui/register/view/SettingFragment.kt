@@ -26,7 +26,6 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
         const val KEY_EMAIL = "key_email"
     }
     private var name: String? = null
-    private var emailg: String? = null
     private var email: String? = null
     private var binding: LayoutSettingBinding? = null
     private var fragmentAttachListener: FragmentAttachLiestener? = null
@@ -52,8 +51,8 @@ class SettingFragment : Fragment(R.layout.layout_setting), Settings.View {
             ?: throw IllegalArgumentException("nome not found")
         email = arguments?.getString(KEY_EMAIL)
         if (name == null) {
-            name = arguments?.getString("EXTRA_NAME")
-           // emailg = arguments?.getString("EXTRA_EMAIL")
+            name = arguments?.getString("EXTRA_NAME_LOGIN")
+            email = arguments?.getString("EXTRA_EMAIL_LOGIN")
         }
         val repositer = DependencyInjector.registerEmailRepository()
         presenter = SettingRegisterPresenter(this, repositer)

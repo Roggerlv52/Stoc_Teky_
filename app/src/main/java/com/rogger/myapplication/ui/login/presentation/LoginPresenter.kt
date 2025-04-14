@@ -39,7 +39,6 @@ class LoginPresenter(
 
                 override fun onSuccess(userAuth: UserAuth) {
                     view?.onUserAuthenticated()
-                    // splashLocalDataSource.setLoggedIn(true) // Define o login bem-sucedido
                     view?.showProgress(false)
                     view?.onUserAuthenticated()
                 }

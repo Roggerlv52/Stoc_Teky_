@@ -131,7 +131,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
 
     override fun onCreateSuccess(name: String,email: String) {
         _binding?.progressbarEmailAndPassword?.visibility = View.GONE
-        fragamentAttachListener?.goToLSettingScreen(name)
+        fragamentAttachListener?.goToLSettingScreen(name,email)
 
     }
 

@@ -9,24 +9,21 @@ import com.rogger.myapplication.MainActivity
 import com.rogger.myapplication.R
 import com.rogger.myapplication.databinding.ActivityRegisterBinding
 import com.rogger.myapplication.ui.commun.extension.hidekyboard
-import com.rogger.myapplication.ui.login.view.ResetEnterEmailFragment
-import com.rogger.myapplication.ui.splashScreen.data.SplashLocalDataSource
 
 class RegisterActivity : AppCompatActivity(),
     FragmentAttachLiestener {
     private lateinit var binding: ActivityRegisterBinding
-    private var name: String? = null
-    private var email: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        name = intent.getStringExtra("EXTRA_NAME")
-       // email = intent.getStringExtra("EXTRA_EMAIL")
-        if (name != null ) {
-            goToLSettingScreen(name!!)
+       val name = intent.getStringExtra("EXTRA_NAME_LOGIN")
+       val email = intent.getStringExtra("EXTRA_EMAIL_LOGIN")
+        if (name != null && email != null ) {
+            goToLSettingScreen(name, email)
         }else{
             if (savedInstanceState == null) {
                 replaceFragment(RegisterEmailFragment())
@@ -44,18 +41,17 @@ class RegisterActivity : AppCompatActivity(),
         replaceFragment(fragment)
     }
 
-    override fun goToLSettingScreen(name: String) {
+    override fun goToLSettingScreen(name: String, email: String) {
         val fragment = SettingFragment().apply {
             arguments = Bundle().apply {
                 putString(SettingFragment.KEY_NAMESETTING, name)
-                //putString(SettingFragment.KEY_EMAIL, email)
+                putString(SettingFragment.KEY_EMAIL, email)
             }
         }
         replaceFragment(fragment)
     }
 
     override fun goToWelcomeScreen(name: String) {
-        SplashLocalDataSource(this).setLoggedIn(true)
         val fragment = RegisterWelcomeFragment().apply {
             arguments = Bundle().apply {
                 putString(RegisterWelcomeFragment.KEY_NAME, name)

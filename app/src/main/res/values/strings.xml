@@ -10,7 +10,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Stoc Teky</string>
-    <string name="nav_header_subtitle" />
+    <string name="nav_header_subtitle" translatable="false" />
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -20,7 +20,7 @@
     <string name="menu_setting">Gestão de Conta</string>
     <string name="todo">Todo\n\n</string>
     <string name="esqueceu_a_senha">Esqueceu a senha?</string>
-    <string name="senha">Senha</string>
+    <string name="senha">Password</string>
     <string name="entrar">Entrar</string>
     <string name="ainda_n_o_cadastrado_cadastre_se">Ainda não é cadastrado? <b>Cadastre-se.</b></string>
     <string name="entrar_com_google">Entrar com Google</string>
@@ -41,14 +41,11 @@
 
     <string name="agree_terms_policy">Ao clicar em Entrar, você concorda com nossos
 <b>Termos de Uso e Privacidade.</b></string>
-    <string name="welcome_to_my_app"><b>Bem-Vindo!\n%1$s</b></string>
     <string name="next_av">Avançar</string>
     <string name="more">Outros\n</string>
-    <string name="menu_gestao_campos" translatable="false">Gestão de Campos</string>
     <string name="finish_screen" translatable="false">Encerrar Sessão</string>
     <string name="menu_helper_alerta" translatable="false">Gestão de Alertas</string>
     <string name="print" translatable="false">Print</string>
-    <string name="instock" translatable="false">Entrada no Estoque</string>
     <string name="stockup" translatable="false">Estoque Alto</string>
     <string name="stockdonw" translatable="false">Estoque Baixo</string>
 
@@ -64,7 +61,7 @@
     <string name="email_ja_cadastrado" translatable="false">E-mail já cadastrado</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="menu_gestao" translatable="false">Gestao de Campos</string>
-    <string name="password_error" translatable="false">Senha incorreta!</string>
+    <string name="password_error" translatable="false">Incorrect password!</string>
     <string name="onegestao" translatable="false">Código de Barras</string>
     <string name="twogestao" translatable="false">Dimensões</string>
     <string name="threegestao" translatable="false">Peso</string>
@@ -89,19 +86,19 @@
     <string name="fourrental" translatable="false">Código de Barras</string>
     <string name="fiftrental" translatable="false">Dimensões</string>
     <string name="sixrental" translatable="false">Peso</string>
-    <string name="sevenrental" translatable="false">Setor</string>
-    <string name="eightrental" translatable="false">Validade</string>
+    <string name="sevenrental" translatable="false">Sector</string>
+    <string name="eightrental" translatable="false">Validate</string>
     <string name="ninerental" translatable="false">Custo</string>
-    <string name="tenrental" translatable="false">Armazém</string>
-    <string name="campos_a_exibir_promocoes" translatable="false"> Campos a Exibir / Promoções</string>
-    <string name="sixteengestao" translatable="false">CNPJ</string>
+    <string name="tenrental" translatable="false">Armada</string>
+    <string name="campos_a_exibir_promocoes" translatable="false"> Campos a Exhibit / Promises</string>
+    <string name="sixteengestao" translatable="false">OCPJP</string>
     <string name="seventenngestao" translatable="false">WhatsApp</string>
-    <string name="eighteengestao" translatable="false">Telefone</string>
+    <string name="eighteengestao" translatable="false">Telephone</string>
     <string name="nineteengestao" translatable="false">E-mail</string>
     <string name="twentynestao" translatable="false">Endereço</string>
     <!--510334309711-el6csopijqpftqneqdb6esjk7q626o9a.apps.googleusercontent.com-->
     <!--510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com-->
-    <string name="default_web_client_id">510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">510334309711-r6krqgnliudko0c96cjp3d8p121pf71r.apps.googleusercontent.com</string>
     <string name="seu_e_mail" translatable="false"><b>Seu email</b></string>
     <string name="message_reset_password" translatable="false"> Informe seu e-mail e receba um link para redefinir sua senha.</string>
     <string name="txt_msg_reset_password" translatable="false">Esqueci minha senha</string>
@@ -109,4 +106,7 @@
     <string name="error_in" translatable="false">Erro de servidor.</string>
     <string name="email_not_found" translatable="false">E-mail não emcontrado.</string>
     <string name="send_sussce" translatable="false">Email enviado com sucesso verifique sua caixa de entrada</string>
+    <string name="welcome_to_my_app" translatable="true"><b>Welcome! %1$s</b></string>
+    <string name="menu_gestao_campos" translatable="false">Field management</string>
+    <string name="instock">Estoque</string>
 </resources>
